@@ -26,13 +26,13 @@
                  "SF Pro Text", "Segoe UI", Helvetica Neue, Arial, sans-serif;
 
   /* Spacing */
-  --space-xs:   4px;
-  --space-sm:   8px;
-  --space-md:  16px;
-  --space-lg:  24px;
-  --space-xl:  48px;
-  --space-2xl: 80px;
-  --space-3xl: 120px;
+--space-xs:   4px;
+--space-sm:   8px;
+--space-md:  16px;
+--space-lg:  24px;
+--space-xl:  40px;
+--space-2xl: 56px;   /* was 80px */
+--space-3xl: 72px;   /* was 120px */
 
   /* Radius */
   --radius-sm:  8px;
@@ -267,7 +267,7 @@ ul  { list-style: none; padding: 0; margin: 0; }
 
 /* ── 7. Hero ─────────────────────────────────────────────── */
 #hero {
-  min-height: 100svh;
+  min-height: 80svh;
   display: flex;
   align-items: center;
   position: relative;
@@ -290,7 +290,7 @@ ul  { list-style: none; padding: 0; margin: 0; }
 .hero-inner {
   max-width: 1200px;
   margin-inline: auto;
-  padding: 80px 24px;
+  padding: 64px 24px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 80px;
@@ -413,7 +413,7 @@ ul  { list-style: none; padding: 0; margin: 0; }
   .hero-inner {
     grid-template-columns: 1fr;
     gap: 48px;
-    padding: 60px 24px;
+    padding: 48px 24px;
   }
   .hero-visual { max-width: 400px; }
   .hero-card-float { left: 0; bottom: -20px; }
@@ -912,6 +912,12 @@ ul  { list-style: none; padding: 0; margin: 0; }
 }
 .section-header.centered .section-subtitle { margin-inline: auto; }
 
+/* Tighter spacing below section headers */
+.section-header.mb-5,
+.row.mb-5 {
+  margin-bottom: 32px !important;
+}
+
 /* ── 17. Footer ──────────────────────────────────────────── */
 #footer {
   background: var(--color-bg);
@@ -998,4 +1004,13 @@ ul  { list-style: none; padding: 0; margin: 0; }
 /* ── 19. Reduced Motion ───────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
+/* ── Tighter section spacing on smaller screens ── */
+@media (max-width: 900px) {
+  .section-pad    { padding-top: 56px; padding-bottom: 56px; }
+  .section-pad-sm { padding-top: 40px; padding-bottom: 40px; }
+}
+@media (max-width: 540px) {
+  .section-pad    { padding-top: 44px; padding-bottom: 44px; }
+  .section-pad-sm { padding-top: 32px; padding-bottom: 32px; }
 }
