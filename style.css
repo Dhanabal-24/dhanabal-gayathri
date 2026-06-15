@@ -555,71 +555,90 @@ ul  { list-style: none; padding: 0; margin: 0; }
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
+  grid-template-rows: 260px 260px 220px;
+  gap: 10px;
 }
+
+/* Explicit placement */
+.gallery-item:nth-child(1) { grid-column: 1; grid-row: 1 / span 2; }
+.gallery-item:nth-child(2) { grid-column: 2; grid-row: 1; }
+.gallery-item:nth-child(3) { grid-column: 3; grid-row: 1; }
+.gallery-item:nth-child(4) { grid-column: 2; grid-row: 2; }
+.gallery-item:nth-child(5) { grid-column: 3; grid-row: 2; }
+.gallery-item:nth-child(6) { grid-column: 1 / span 3; grid-row: 3; }
+
+/* Each cell is a positioned container — image fills it 100% */
 .gallery-item {
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
   overflow: hidden;
-  background: var(--color-surface);
   position: relative;
   cursor: pointer;
+  /* No background, no padding, no min-height — image IS the cell */
 }
-.gallery-item:nth-child(1) { grid-row: span 2; }
-.gallery-item:nth-child(5) { grid-column: span 2; }
 
-.gallery-img-wrap {
+.gallery-item img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
-  min-height: 200px;
-  overflow: hidden;
+  object-fit: cover;
+  display: block;
+  transition: transform .55s var(--ease);
 }
-.gallery-placeholder {
-  width: 100%;
-  height: 100%;
-  min-height: 200px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background: linear-gradient(135deg, var(--color-surface) 0%, #ede8e3 100%);
-  color: var(--color-text-tertiary);
-  font-size: .75rem;
-  font-weight: 500;
-  transition: transform .5s var(--ease);
-}
-.gallery-placeholder i { font-size: 1.4rem; color: var(--color-warm); }
-.gallery-item:hover .gallery-placeholder { transform: scale(1.04); }
+.gallery-item:hover img { transform: scale(1.05); }
 
+/* Hover overlay */
 .gallery-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,.4) 0%, transparent 60%);
+  background: linear-gradient(to top, rgba(0,0,0,.55) 0%, transparent 50%);
   opacity: 0;
-  transition: opacity var(--duration);
+  transition: opacity .3s var(--ease);
   display: flex;
   align-items: flex-end;
-  padding: 16px;
-  border-radius: var(--radius-md);
+  padding: 16px 18px;
+  z-index: 1;
 }
 .gallery-item:hover .gallery-overlay { opacity: 1; }
 .gallery-overlay-label {
-  font-size: .75rem;
-  font-weight: 500;
-  color: rgba(255,255,255,.9);
-  letter-spacing: .04em;
+  font-size: .72rem;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: .07em;
   text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
-@media (max-width: 768px) {
+/* ── Tablet ── */
+@media (max-width: 900px) {
   .gallery-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 220px 220px 220px 200px;
+    gap: 10px;
   }
-  .gallery-item:nth-child(1) { grid-row: auto; }
-  .gallery-item:nth-child(5) { grid-column: auto; }
+  .gallery-item:nth-child(1) { grid-column: 1; grid-row: 1 / span 2; }
+  .gallery-item:nth-child(2) { grid-column: 2; grid-row: 1; }
+  .gallery-item:nth-child(3) { grid-column: 2; grid-row: 2; }
+  .gallery-item:nth-child(4) { grid-column: 1; grid-row: 3; }
+  .gallery-item:nth-child(5) { grid-column: 2; grid-row: 3; }
+  .gallery-item:nth-child(6) { grid-column: 1 / span 2; grid-row: 4; }
 }
-@media (max-width: 480px) {
-  .gallery-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+
+/* ── Mobile ── */
+@media (max-width: 540px) {
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, 140px);
+    gap: 8px;
+  }
+  .gallery-item:nth-child(1) { grid-column: auto; grid-row: auto; }
+  .gallery-item:nth-child(2) { grid-column: auto; grid-row: auto; }
+  .gallery-item:nth-child(3) { grid-column: auto; grid-row: auto; }
+  .gallery-item:nth-child(4) { grid-column: auto; grid-row: auto; }
+  .gallery-item:nth-child(5) { grid-column: auto; grid-row: auto; }
+  .gallery-item:nth-child(6) { grid-column: auto; grid-row: auto; }
 }
 
 /* ── 11. Journal ─────────────────────────────────────────── */
