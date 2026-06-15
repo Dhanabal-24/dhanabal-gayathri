@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A private digital collection of memories, milestones and dreams shared by Dhanabal and Gayathri." />
+  <title>A Quite Corner of the Internet — A Love Story</title>
+
+  <!-- Bootstrap 5 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <!-- Custom stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- ══════════════════════════════════════════════
+       NAVBAR
+  ══════════════════════════════════════════════ -->
+  <nav id="mainNav" aria-label="Main navigation">
+    <div class="navbar-inner">
+      <a href="#hero" class="navbar-brand-text">D &amp; G</a>
+
+      <!-- Desktop links -->
+      <div class="nav-links" role="navigation">
+        <a href="#hero">Home</a>
+        <a href="#story">Story</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#journal">Journal</a>
+        <a href="#bucket">Bucket List</a>
+        <a href="#future">Future</a>
+      </div>
+
+      <!-- Mobile toggle -->
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
+        <i class="bi bi-list" id="navIcon"></i>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div class="mobile-menu" id="mobileMenu" role="navigation">
+      <a href="#hero"    onclick="closeMenu()">Home</a>
+      <a href="#story"   onclick="closeMenu()">Story</a>
+      <a href="#gallery" onclick="closeMenu()">Gallery</a>
+      <a href="#journal" onclick="closeMenu()">Journal</a>
+      <a href="#bucket"  onclick="closeMenu()">Bucket List</a>
+      <a href="#future"  onclick="closeMenu()">Future</a>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════════════════
+       HERO
+  ══════════════════════════════════════════════ -->
+  <section id="hero">
+    <div class="hero-inner">
+
+      <!-- Left: text -->
+      <div class="hero-text">
+        <div class="hero-badge fade-up">
+          <span class="hero-badge-dot"></span>
+          A private portal · Est. June 2026
+        </div>
+        <h1 class="hero-heading fade-up fade-up-d1">
+          Our Quite corner <br>of the <em>internet</em>
+        </h1>
+        <p class="hero-subtitle fade-up fade-up-d2">
+          The digital home of Dhanabal and Gayathri, where memories are preserved and dreams take shape.
+        </p>
+        <div class="hero-actions fade-up fade-up-d3">
+          <a href="#story"   class="btn-primary"><i class="bi bi-arrow-right-circle"></i> View Story</a>
+          <a href="#gallery" class="btn-secondary"><i class="bi bi-images"></i> Explore Gallery</a>
+        </div>
+      </div>
+
+      <!-- Right: photo frame -->
+<div class="hero-visual fade-up fade-up-d2">
+  <div class="hero-photo-frame">
+
+    <img src="assets\images\rightphotoframe.jpg" alt="Dhanabal and Gayathri" />
+
+  </div>
+  <div class="hero-card-float">
+    <div class="hcf-icon"><i class="bi bi-heart-fill"></i></div>
+    <div class="hcf-text">
+      <div class="hcf-label">Together since</div>
+      <div class="hcf-value">2020 · 5 years</div>
+    </div>
+  </div>
+</div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       STATS
+  ══════════════════════════════════════════════ -->
+  <section class="bg-surface section-pad-sm">
+    <div class="max-w">
+      <div class="stats-grid">
+
+        <div class="stat-card reveal">
+          <i class="bi bi-calendar-heart stat-icon"></i>
+          <div class="stat-num">5+</div>
+          <div class="stat-label">Years Together</div>
+        </div>
+
+        <div class="stat-card reveal">
+          <i class="bi bi-collection-fill stat-icon"></i>
+          <div class="stat-num">100+</div>
+          <div class="stat-label">Memories Created</div>
+        </div>
+
+        <div class="stat-card reveal">
+          <i class="bi bi-geo-alt-fill stat-icon"></i>
+          <div class="stat-num">12+</div>
+          <div class="stat-label">Places Visited</div>
+        </div>
+
+        <div class="stat-card reveal">
+          <i class="bi bi-stars stat-icon"></i>
+          <div class="stat-num">50+</div>
+          <div class="stat-label">Future Goals</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       OUR STORY
+  ══════════════════════════════════════════════ -->
+  <section id="story" class="section-pad">
+    <div class="max-w">
+      <div class="row mb-5">
+        <div class="col">
+          <p class="section-eyebrow reveal">Our Story</p>
+          <h2 class="section-title reveal mt-2">Every chapter matters.</h2>
+          <p class="section-subtitle body-lg reveal mt-2">
+            The milestones that brought us here, told one moment at a time.
+          </p>
+        </div>
+      </div>
+
+      <!-- Timeline -->
+      <div class="timeline">
+
+        <div class="timeline-item reveal">
+          <div class="tl-dot-wrap">
+            <div class="tl-dot"><i class="bi bi-lightning-fill"></i></div>
+          </div>
+          <div class="tl-card">
+            <div class="tl-date">The beginning</div>
+            <div class="tl-title">First Meeting</div>
+            <div class="tl-desc">Around 2019–2020, we crossed paths at school as strangers, never knowing our story had already begun.</div>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="tl-dot-wrap">
+            <div class="tl-dot"><i class="bi bi-chat-heart-fill"></i></div>
+          </div>
+          <div class="tl-card">
+            <div class="tl-date">Soon after</div>
+            <div class="tl-title">First Conversation</div>
+            <div class="tl-desc">October 19, 2020. It all began with a simple "H" on Instagram, a message that seemed ordinary at the time.
+Soon, Instagram chats turned into WhatsApp conversations, and those conversations became a part of our everyday lives.</div>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="tl-dot-wrap">
+            <div class="tl-dot"><i class="bi bi-telephone-fill"></i></div>
+          </div>
+          <div class="tl-card">
+            <div class="tl-date">Late nights</div>
+            <div class="tl-title">First Call</div>
+            <div class="tl-desc">Our first call wasn't long—just around a minute. Yet, after months of chatting, that brief conversation became a moment we'll always remember.</div>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="tl-dot-wrap">
+            <div class="tl-dot"><i class="bi bi-cup-hot-fill"></i></div>
+          </div>
+          <div class="tl-card">
+            <div class="tl-date">A special day</div>
+            <div class="tl-title">First In Person Meeting</div>
+            <div class="tl-desc">After months of conversations, we finally met at her home. What seemed like a simple visit became one of the most memorable moments of our journey.</div>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="tl-dot-wrap">
+            <div class="tl-dot"><i class="bi bi-award-fill"></i></div>
+          </div>
+          <div class="tl-card">
+            <div class="tl-date">A turning point</div>
+            <div class="tl-title">Special Milestone</div>
+            <div class="tl-desc">Some moments redefine everything. This was one of those — a commitment, a declaration, a step forward that made the future feel certain and bright.</div>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="tl-dot-wrap">
+            <div class="tl-dot"><i class="bi bi-bookmark-heart-fill"></i></div>
+          </div>
+          <div class="tl-card">
+            <div class="tl-date">Always remembered</div>
+            <div class="tl-title">Favorite Memory</div>
+            <div class="tl-desc">On the evening of our first meeting, we stood together on her terrace, watching the sunset paint the sky. Between conversations, photos, shared noodles, and quiet moments, an ordinary evening became one of our most cherished memories.</div>
+          </div>
+        </div>
+
+      </div><!-- /timeline -->
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       GALLERY
+  ══════════════════════════════════════════════ -->
+  <section id="gallery" class="bg-surface section-pad">
+    <div class="max-w">
+      <div class="section-header centered mb-5">
+        <p class="section-eyebrow reveal">Gallery</p>
+        <h2 class="section-title reveal mt-2">Moments in frames.</h2>
+        <p class="section-subtitle reveal mt-2" style="margin-inline:auto">
+          A curated collection of photographs that tell our story without words.
+        </p>
+      </div>
+
+      <div class="gallery-grid">
+
+        <div class="gallery-item reveal">
+          <div class="gallery-placeholder">
+            <i class="bi bi-image"></i>
+            <span>Special Moment</span>
+          </div>
+          <div class="gallery-overlay">
+            <span class="gallery-overlay-label"><i class="bi bi-heart-fill me-1"></i> Together</span>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal">
+          <div class="gallery-placeholder">
+            <i class="bi bi-image"></i>
+            <span>First Date</span>
+          </div>
+          <div class="gallery-overlay">
+            <span class="gallery-overlay-label"><i class="bi bi-cup-hot me-1"></i> First Date</span>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal">
+          <div class="gallery-placeholder">
+            <i class="bi bi-image"></i>
+            <span>Travel Memories</span>
+          </div>
+          <div class="gallery-overlay">
+            <span class="gallery-overlay-label"><i class="bi bi-geo-alt me-1"></i> Travel</span>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal">
+          <div class="gallery-placeholder">
+            <i class="bi bi-image"></i>
+            <span>Celebration</span>
+          </div>
+          <div class="gallery-overlay">
+            <span class="gallery-overlay-label"><i class="bi bi-stars me-1"></i> Celebration</span>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal">
+          <div class="gallery-placeholder">
+            <i class="bi bi-image"></i>
+            <span>Our Favorite Day</span>
+          </div>
+          <div class="gallery-overlay">
+            <span class="gallery-overlay-label"><i class="bi bi-sun me-1"></i> Favorite Day</span>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal">
+          <div class="gallery-placeholder">
+            <i class="bi bi-image"></i>
+            <span>Candid Moments</span>
+          </div>
+          <div class="gallery-overlay">
+            <span class="gallery-overlay-label"><i class="bi bi-camera me-1"></i> Candid</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       JOURNAL
+  ══════════════════════════════════════════════ -->
+  <section id="journal" class="section-pad">
+    <div class="max-w">
+      <div class="section-header mb-5">
+        <p class="section-eyebrow reveal">Journal</p>
+        <h2 class="section-title reveal mt-2">Small days, big feelings.</h2>
+        <p class="section-subtitle body-lg reveal mt-2">
+          The ordinary evenings and spontaneous plans that became our best stories.
+        </p>
+      </div>
+
+      <div class="journal-grid">
+
+        <div class="journal-card reveal">
+          <div class="j-tag"><i class="bi bi-film me-1"></i> Evening</div>
+          <div class="j-title">Movie Night</div>
+          <div class="j-date">November 2022</div>
+          <div class="j-desc">Blankets, bad lighting, and a film neither of us had heard of. We paused it halfway to talk for two hours. Didn't finish it. Didn't need to.</div>
+        </div>
+
+        <div class="journal-card reveal">
+          <div class="j-tag"><i class="bi bi-balloon-heart me-1"></i> Special</div>
+          <div class="j-title">Birthday Celebration</div>
+          <div class="j-date">June 2021</div>
+          <div class="j-desc">A surprise that took eight months of planning and eight months to bring to life. The moment it finally happened made every day of waiting worth it.</div>
+        </div>
+
+        <div class="journal-card reveal">
+          <div class="j-tag"><i class="bi bi-water me-1"></i> Outdoors</div>
+          <div class="j-title">Beach Walk</div>
+          <div class="j-date">December 2022</div>
+          <div class="j-desc">Low tide, cool air, no agenda. Just walking, talking, and the kind of quiet that doesn't need to be filled.</div>
+        </div>
+
+        <div class="journal-card reveal">
+          <div class="j-tag"><i class="bi bi-moon-stars me-1"></i> Late Night</div>
+          <div class="j-title">Long Conversations</div>
+          <div class="j-date">Ongoing</div>
+          <div class="j-desc">Past midnight, about nothing and everything. These are the conversations I'd choose again — unhurried, honest, completely unplanned.</div>
+        </div>
+
+        <div class="journal-card reveal">
+          <div class="j-tag"><i class="bi bi-sun me-1"></i> Favourite</div>
+          <div class="j-title">Favorite Day Together</div>
+          <div class="j-date">June 2023</div>
+          <div class="j-desc">No itinerary. No obligations. Just a perfect day that assembled itself — breakfast, laughter, golden light, and the feeling that nothing was missing.</div>
+        </div>
+
+        <div class="journal-card reveal">
+          <div class="j-tag"><i class="bi bi-gift me-1"></i> Surprise</div>
+          <div class="j-title">Special Surprise</div>
+          <div class="j-date">August 2023</div>
+          <div class="j-desc">Small gestures land the hardest. This one — thoughtful, perfectly timed, quietly personal — is the kind that stays with you.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       FAVORITE THINGS
+  ══════════════════════════════════════════════ -->
+  <section class="bg-surface section-pad">
+    <div class="max-w">
+      <div class="section-header centered mb-5">
+        <p class="section-eyebrow reveal">Favorites</p>
+        <h2 class="section-title reveal mt-2">Two people. Two worlds. One home.</h2>
+      </div>
+
+      <div class="favorites-grid">
+
+        <!-- Dhanabal -->
+        <div class="fav-card reveal">
+          <div class="fav-avatar"><i class="bi bi-person-fill"></i></div>
+          <div class="fav-name">Dhanabal's Favorites</div>
+
+          <div class="fav-item">
+            <div class="fav-item-icon"><i class="bi bi-egg-fried"></i></div>
+            <div>
+              <div class="fav-item-label">Favourite Food</div>
+              <div class="fav-item-value">Her Hand Mades</div>
+            </div>
+          </div>
+          <div class="fav-item">
+            <div class="fav-item-icon"><i class="bi bi-film"></i></div>
+            <div>
+              <div class="fav-item-label">Favourite Movie</div>
+              <div class="fav-item-value">Thug Life, Parashakthi, Coolie, Karuppu Pulsar</div>
+            </div>
+          </div>
+          <div class="fav-item">
+            <div class="fav-item-icon"><i class="bi bi-music-note-beamed"></i></div>
+            <div>
+              <div class="fav-item-label">Favourite Song</div>
+              <div class="fav-item-value">Minnalvala</div>
+            </div>
+          </div>
+          <div class="fav-item">
+            <div class="fav-item-icon"><i class="bi bi-airplane"></i></div>
+            <div>
+              <div class="fav-item-label">Dream Destination</div>
+              <div class="fav-item-value">J Nagar, Sivakasi</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gayathri -->
+        <div class="fav-card reveal">
+          <div class="fav-avatar"><i class="bi bi-person-fill"></i></div>
+          <div class="fav-name">Gayathri's Favorites</div>
+
+          <div class="fav-item">
+            <div class="fav-item-icon"><i class="bi bi-egg-fried"></i></div>
+            <div>
+              <div class="fav-item-label">Favourite Food</div>
+              <div class="fav-item-value">Chicken Rice, Burger, Kaalan</div>
+            </div>
+          </div>
+          <div class="fav-item">
+            <div class="fav-item-icon"><i class="bi bi-film"></i></div>
+            <div>
+              <div class="fav-item-label">Favourite Movie</div>
+              <div class="fav-item-value">Thug Life, Coolie, Parashakthi</div>
+            </div>
+          </div>
+          <div class="fav-item">
+            <div class="fav-item-icon"><i class="bi bi-music-note-beamed"></i></div>
+            <div>
+              <div class="fav-item-label">Favourite Song</div>
+              <div class="fav-item-value">Oh oh uyire</div>
+            </div>
+          </div>
+          <div class="fav-item">
+            <div class="fav-item-icon"><i class="bi bi-airplane"></i></div>
+            <div>
+              <div class="fav-item-label">Dream Destination</div>
+              <div class="fav-item-value">Housing Board, Sivakasi</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       BUCKET LIST
+  ══════════════════════════════════════════════ -->
+  <section id="bucket" class="section-pad">
+    <div class="max-w">
+      <div class="section-header mb-5">
+        <p class="section-eyebrow reveal">Bucket List</p>
+        <h2 class="section-title reveal mt-2">Things we're building toward.</h2>
+        <p class="section-subtitle body-lg reveal mt-2">
+          Some ticked, some still ahead — every one of them worth chasing.
+        </p>
+      </div>
+
+      <div class="bucket-grid">
+
+        <div class="bucket-card done reveal">
+          <div class="bucket-check"><i class="bi bi-check-lg"></i></div>
+          <div>
+            <div class="bucket-title">Car Ride</div>
+            <div class="bucket-sub">One road, endless conversations</div>
+          </div>
+        </div>
+
+        <div class="bucket-card done reveal">
+          <div class="bucket-check"><i class="bi bi-check-lg"></i></div>
+          <div>
+            <div class="bucket-title">Going to Movie</div>
+            <div class="bucket-sub">A good movie and even better company</div>
+          </div>
+        </div>
+
+        <div class="bucket-card reveal">
+          <div class="bucket-check"><i class="bi bi-check-lg"></i></div>
+          <div>
+            <div class="bucket-title">Theni Trip</div>
+            <div class="bucket-sub">Hills, mist &amp; quiet mornings</div>
+          </div>
+        </div>
+
+        <div class="bucket-card done reveal">
+          <div class="bucket-check"><i class="bi bi-check-lg"></i></div>
+          <div>
+            <div class="bucket-title">A Short Bike Ride</div>
+            <div class="bucket-sub">Open roads, no destination</div>
+          </div>
+        </div>
+
+        <div class="bucket-card reveal">
+          <div class="bucket-check"><i class="bi bi-check-lg"></i></div>
+          <div>
+            <div class="bucket-title">Temple Date</div>
+            <div class="bucket-sub">Seeking blessings for the journey ahead</div>
+          </div>
+        </div>
+
+        <div class="bucket-card reveal">
+          <div class="bucket-check"><i class="bi bi-check-lg"></i></div>
+          <div>
+            <div class="bucket-title">International Trip</div>
+            <div class="bucket-sub">Passport stamps &amp; new memories</div>
+          </div>
+        </div>
+
+        <div class="bucket-card done reveal">
+          <div class="bucket-check"><i class="bi bi-check-lg"></i></div>
+          <div>
+            <div class="bucket-title">Train Travel</div>
+            <div class="bucket-sub">Every station, a new memory waiting</div>
+          </div>
+        </div>
+
+        <div class="bucket-card reveal">
+          <div class="bucket-check"><i class="bi bi-check-lg"></i></div>
+          <div>
+            <div class="bucket-title">Cooking Together</div>
+            <div class="bucket-sub">A proper meal made from scratch</div>
+          </div>
+        </div>
+
+        <div class="bucket-card reveal">
+          <div class="bucket-check"><i class="bi bi-check-lg"></i></div>
+          <div>
+            <div class="bucket-title">Shopping Together</div>
+            <div class="bucket-sub">Browsing everything, buying almost nothing</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       FUTURE GOALS
+  ══════════════════════════════════════════════ -->
+  <section id="future" class="bg-surface section-pad">
+    <div class="max-w">
+      <div class="section-header mb-5">
+        <p class="section-eyebrow reveal">Future Goals</p>
+        <h2 class="section-title reveal mt-2">Everything still ahead.</h2>
+        <p class="section-subtitle body-lg reveal mt-2">
+          A shared vision board for the life we're building together — one goal at a time.
+        </p>
+      </div>
+
+      <div class="goals-grid">
+
+        <div class="goal-card reveal">
+          <div class="goal-icon"><i class="bi bi-globe-asia-australia"></i></div>
+          <div class="goal-title">Travel Together</div>
+          <div class="goal-desc">New countries, new cultures, new perspectives. The world is large and we want to explore as much of it as possible — together.</div>
+        </div>
+
+        <div class="goal-card reveal">
+          <div class="goal-icon"><i class="bi bi-camera2"></i></div>
+          <div class="goal-title">Create More Memories</div>
+          <div class="goal-desc">Document the unplanned moments. Photograph the ordinary evenings. Fill this journal with more chapters worth returning to.</div>
+        </div>
+
+        <div class="goal-card reveal">
+          <div class="goal-icon"><i class="bi bi-mortarboard-fill"></i></div>
+          <div class="goal-title">Learn New Skills</div>
+          <div class="goal-desc">Pick up something new — together. A language, a craft, a sport. Growing individually and as a pair.</div>
+        </div>
+
+        <div class="goal-card reveal">
+          <div class="goal-icon"><i class="bi bi-house-heart-fill"></i></div>
+          <div class="goal-title">Build a Beautiful Future</div>
+          <div class="goal-desc">A home that's ours. Roots and rhythm. A place where mornings are slow and evenings are warm.</div>
+        </div>
+
+        <div class="goal-card reveal">
+          <div class="goal-icon"><i class="bi bi-pin-map-fill"></i></div>
+          <div class="goal-title">Explore New Places</div>
+          <div class="goal-desc">Off the usual path. Towns we've never heard of. Food we can't pronounce. Maps still unmarked.</div>
+        </div>
+
+        <div class="goal-card reveal">
+          <div class="goal-icon"><i class="bi bi-star-fill"></i></div>
+          <div class="goal-title">Achieve Shared Dreams</div>
+          <div class="goal-desc">The big ones. The ones that take time, patience, and each other. Working toward them — one day, one decision at a time.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       QUOTE
+  ══════════════════════════════════════════════ -->
+  <section id="quote">
+    <div class="max-w" style="text-align:center">
+      <span class="quote-mark" aria-hidden="true">&ldquo;</span>
+      <p class="quote-text reveal">
+        Every memory has a place, and every place has <em>"US"</em>.
+      </p>
+      <p class="quote-attr reveal">— Dhanabal</p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════════ -->
+  <footer id="footer">
+    <div class="footer-inner">
+      <div class="row gy-5">
+
+        <!-- Brand -->
+        <div class="col-lg-4">
+          <div class="footer-brand">Dhanabal &amp; Gayathri</div>
+          <p class="footer-tagline mt-2">
+            A digital collection of memories, stories and dreams.<br>
+            Private · Personal · Ours.
+          </p>
+          <div class="social-links mt-4">
+            <a class="social-link" href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a class="social-link" href="#" aria-label="Twitter/X"><i class="bi bi-twitter-x"></i></a>
+            <a class="social-link" href="#" aria-label="Pinterest"><i class="bi bi-pinterest"></i></a>
+            <a class="social-link" href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+
+        <!-- Explore -->
+        <div class="col-6 col-lg-2 offset-lg-2">
+          <div class="footer-col-title">Explore</div>
+          <ul class="footer-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#story">Our Story</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#journal">Journal</a></li>
+          </ul>
+        </div>
+
+        <!-- More -->
+        <div class="col-6 col-lg-2">
+          <div class="footer-col-title">More</div>
+          <ul class="footer-links">
+            <li><a href="#bucket">Bucket List</a></li>
+            <li><a href="#future">Future Goals</a></li>
+            <li><a href="#quote">Quote</a></li>
+          </ul>
+        </div>
+
+        <!-- Together -->
+        <div class="col-12 col-lg-2">
+          <div class="footer-col-title">Together</div>
+          <ul class="footer-links">
+            <li><a href="#story">3+ Years</a></li>
+            <li><a href="#journal">100+ Memories</a></li>
+            <li><a href="#bucket">50+ Goals</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Bottom -->
+      <div class="footer-bottom">
+        <span class="footer-copy">© 2024 Dhanabal &amp; Gayathri. All rights reserved.</span>
+        <span class="footer-heart">Made with <i class="bi bi-heart-fill"></i> for each other</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ══════════════════════════════════════════════
+       SCRIPTS
+  ══════════════════════════════════════════════ -->
+  <script>
+    /* ── Navbar scroll shadow ── */
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 12);
+    }, { passive: true });
+
+    /* ── Mobile menu toggle ── */
+    const toggle   = document.getElementById('navToggle');
+    const menu     = document.getElementById('mobileMenu');
+    const navIcon  = document.getElementById('navIcon');
+
+    toggle.addEventListener('click', () => {
+      const open = menu.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open);
+      navIcon.className = open ? 'bi bi-x-lg' : 'bi bi-list';
+    });
+
+    function closeMenu() {
+      menu.classList.remove('open');
+      toggle.setAttribute('aria-expanded', false);
+      navIcon.className = 'bi bi-list';
+    }
+
+    /* ── Scroll reveal ── */
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer  = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    revealEls.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
