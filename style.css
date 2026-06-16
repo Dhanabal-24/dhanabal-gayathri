@@ -1014,3 +1014,8 @@ ul  { list-style: none; padding: 0; margin: 0; }
   .section-pad    { padding-top: 44px; padding-bottom: 44px; }
   .section-pad-sm { padding-top: 32px; padding-bottom: 32px; }
 }
+
+.coffee-word{
+  color: #c08b5c; /* Coffee brown */
+  font-weight: 700;
+}
