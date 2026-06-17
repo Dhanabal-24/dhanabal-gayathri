@@ -4,7 +4,6 @@
    ============================================================ */
 
 /* ── Key dates ───────────────────────────────────────────── */
-/* Edit these two lines if your dates ever change. */
 const RELATIONSHIP_START = new Date('2020-10-19T00:00:00');
 const ANNIVERSARY_MONTH_DAY = { month: 9, day: 19 }; // month is 0-indexed (9 = October)
 
@@ -70,10 +69,10 @@ updateLiveCounter();
 setInterval(updateLiveCounter, 30000);
 
 /* ── Anniversary countdown ───────────────────────────────── */
-const cdDays = document.getElementById('cdDays');
+const cdDays  = document.getElementById('cdDays');
 const cdHours = document.getElementById('cdHours');
-const cdMins = document.getElementById('cdMins');
-const cdSecs = document.getElementById('cdSecs');
+const cdMins  = document.getElementById('cdMins');
+const cdSecs  = document.getElementById('cdSecs');
 
 function nextAnniversary() {
   const now = new Date();
@@ -95,29 +94,29 @@ function updateCountdown() {
   const m = Math.floor((diff % 3600000) / 60000);
   const s = Math.floor((diff % 60000) / 1000);
 
-  cdDays.textContent = String(d).padStart(2, '0');
+  cdDays.textContent  = String(d).padStart(2, '0');
   cdHours.textContent = String(h).padStart(2, '0');
-  cdMins.textContent = String(m).padStart(2, '0');
-  cdSecs.textContent = String(s).padStart(2, '0');
+  cdMins.textContent  = String(m).padStart(2, '0');
+  cdSecs.textContent  = String(s).padStart(2, '0');
 }
 updateCountdown();
 setInterval(updateCountdown, 1000);
 
 /* ── Lightbox gallery ─────────────────────────────────────── */
 const galleryItems = Array.from(document.querySelectorAll('#galleryGrid .gallery-item'));
-const lightbox = document.getElementById('lightbox');
-const lbImage = document.getElementById('lbImage');
+const lightbox  = document.getElementById('lightbox');
+const lbImage   = document.getElementById('lbImage');
 const lbCaption = document.getElementById('lbCaption');
-const lbClose = document.getElementById('lbClose');
-const lbPrev = document.getElementById('lbPrev');
-const lbNext = document.getElementById('lbNext');
+const lbClose   = document.getElementById('lbClose');
+const lbPrev    = document.getElementById('lbPrev');
+const lbNext    = document.getElementById('lbNext');
 
 let currentIndex = 0;
 
 function openLightbox(index) {
   currentIndex = index;
   const item = galleryItems[currentIndex];
-  const img = item.querySelector('img');
+  const img  = item.querySelector('img');
   lbImage.src = img.src;
   lbImage.alt = img.alt;
   lbCaption.textContent = item.dataset.caption || img.alt || '';
@@ -147,15 +146,15 @@ lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLigh
 
 document.addEventListener('keydown', (e) => {
   if (!lightbox.classList.contains('open')) return;
-  if (e.key === 'Escape') closeLightbox();
-  if (e.key === 'ArrowLeft') showRelative(-1);
+  if (e.key === 'Escape')     closeLightbox();
+  if (e.key === 'ArrowLeft')  showRelative(-1);
   if (e.key === 'ArrowRight') showRelative(1);
 });
 
 /* ── Memory jar ───────────────────────────────────────────── */
 const memories = [
   'October 19, 2020 — it all began with a simple "H" on Instagram.',
-  '“Kavala padadhinga, Naan iruken” — a line that turned out to be a hint all along.',
+  '"Kavala padadhinga, Naan iruken" — a line that turned out to be a hint all along.',
   'A week of overthinking ended with: "Yes, I too love you."',
   'Our first call lasted barely a minute, after months of chatting.',
   'A hushed 7:30 PM evening, an empty house, and our very first selfie together.',
@@ -178,7 +177,6 @@ jarButton.addEventListener('click', () => {
   lastMemoryIndex = idx;
 
   jarResult.classList.remove('show');
-  // restart animation
   void jarResult.offsetWidth;
   jarResult.textContent = memories[idx];
   jarResult.classList.add('show');
@@ -191,7 +189,7 @@ function spawnHeart(x, y) {
   const heart = document.createElement('i');
   heart.className = 'bi bi-heart-fill floating-heart';
   heart.style.left = `${x}px`;
-  heart.style.top = `${y}px`;
+  heart.style.top  = `${y}px`;
   heart.style.setProperty('--drift', `${(Math.random() - 0.5) * 80}px`);
   document.body.appendChild(heart);
   heart.addEventListener('animationend', () => heart.remove());
@@ -204,8 +202,8 @@ bucketCards.forEach(card => {
       const rect = card.getBoundingClientRect();
       for (let i = 0; i < 6; i++) {
         spawnHeart(
-          rect.left + rect.width / 2 + (Math.random() - 0.5) * 30,
-          rect.top + window.scrollY + rect.height / 2
+          rect.left + rect.width  / 2 + (Math.random() - 0.5) * 30,
+          rect.top  + window.scrollY + rect.height / 2
         );
       }
     }
@@ -215,11 +213,20 @@ bucketCards.forEach(card => {
 /* ── Playlist: play / pause actual audio ─────────────────── */
 const trackPlayButtons = document.querySelectorAll('.track-play');
 
+// Start times in seconds for each track (by audio element id)
+const TRACK_START_TIMES = {
+  'audio-minnalvala':  58,   // 0:56
+  'audio-oh-oh-uyire': 172,  // 2:52
+};
+
 function stopAllTracks(exceptBtn) {
   trackPlayButtons.forEach(btn => {
     if (btn === exceptBtn) return;
     const audio = document.getElementById(btn.dataset.audio);
-    if (audio) { audio.pause(); audio.currentTime = 0; }
+    if (audio) {
+      audio.pause();
+      audio.currentTime = TRACK_START_TIMES[btn.dataset.audio] ?? 0;
+    }
     btn.querySelector('i').className = 'bi bi-play-fill';
     btn.closest('[data-track-row]')?.classList.remove('playing');
   });
@@ -227,15 +234,25 @@ function stopAllTracks(exceptBtn) {
 
 trackPlayButtons.forEach(btn => {
   const audio = document.getElementById(btn.dataset.audio);
-  const row = btn.closest('[data-track-row]');
-  const icon = btn.querySelector('i');
+  const row   = btn.closest('[data-track-row]');
+  const icon  = btn.querySelector('i');
   if (!audio) return;
+
+  const startTime = TRACK_START_TIMES[btn.dataset.audio] ?? 0;
+
+  // Jump to the defined start time as soon as the browser knows the duration
+  audio.addEventListener('loadedmetadata', () => {
+    audio.currentTime = startTime;
+  });
 
   btn.addEventListener('click', () => {
     if (audio.paused) {
       stopAllTracks(btn);
+      // Ensure correct start time is set before playing
+      if (audio.currentTime < startTime) {
+        audio.currentTime = startTime;
+      }
       audio.play().catch(() => {
-        /* No audio file found at the src yet — let the person know instead of failing silently */
         alert("Couldn't play this track. Add the matching mp3 file to assets/audio/ to enable playback.");
       });
     } else {
@@ -243,7 +260,7 @@ trackPlayButtons.forEach(btn => {
     }
   });
 
-  audio.addEventListener('play', () => {
+  audio.addEventListener('play',  () => {
     icon.className = 'bi bi-pause-fill';
     row.classList.add('playing');
   });
@@ -254,6 +271,7 @@ trackPlayButtons.forEach(btn => {
   audio.addEventListener('ended', () => {
     icon.className = 'bi bi-play-fill';
     row.classList.remove('playing');
+    audio.currentTime = startTime; // reset to start time, not 0:00
   });
 });
 
@@ -274,13 +292,13 @@ if (document.getElementById('placesMap') && window.L) {
   });
 
   const places = [
-    { name: 'Anjac College, Sivakasi', desc: 'Where our first car ride began', lat: 9.4525, lng: 77.7948 },
-    { name: 'Marina Beach, Chennai', desc: 'End of a long, full day together', lat: 13.0500, lng: 80.2824 },
-    { name: 'Vadapalani Temple, Chennai', desc: 'Seeking blessings for the road ahead', lat: 13.0524, lng: 80.2122 },
-    { name: 'Nexus Mall, Chennai', desc: 'An afternoon of wandering and window shopping', lat: 13.0518, lng: 80.2079 },
-    { name: 'Erode Junction', desc: 'An unreserved compartment, just to ride a little further with you', lat: 11.3410, lng: 77.7172 },
-    { name: 'Theni', desc: 'Hills, mist and quiet mornings — still on the list', lat: 10.0104, lng: 77.4768 },
-    { name: 'Bengaluru', desc: 'Her college IV trip, and his unplanned detour', lat: 12.9716, lng: 77.5946 }
+    { name: 'Anjac College, Sivakasi',    desc: 'Where our first car ride began',                                      lat: 9.4525,  lng: 77.7948 },
+    { name: 'Marina Beach, Chennai',       desc: 'End of a long, full day together',                                   lat: 13.0500, lng: 80.2824 },
+    { name: 'Vadapalani Temple, Chennai',  desc: 'Seeking blessings for the road ahead',                               lat: 13.0524, lng: 80.2122 },
+    { name: 'Nexus Mall, Chennai',         desc: 'An afternoon of wandering and window shopping',                      lat: 13.0518, lng: 80.2079 },
+    { name: 'Erode Junction',             desc: 'An unreserved compartment, just to ride a little further with you',  lat: 11.3410, lng: 77.7172 },
+    { name: 'Theni',                       desc: 'Hills, mist and quiet mornings — still on the list',                lat: 10.0104, lng: 77.4768 },
+    { name: 'Bengaluru',                   desc: 'Her college IV trip, and his unplanned detour',                      lat: 12.9716, lng: 77.5946 }
   ];
 
   const bounds = [];
@@ -292,14 +310,13 @@ if (document.getElementById('placesMap') && window.L) {
   });
 
   map.fitBounds(bounds, { padding: [30, 30] });
-
   map.on('click', () => map.scrollWheelZoom.enable());
 }
 
 /* ── Guestbook (saved locally on this device) ────────────── */
-const GUESTBOOK_KEY = 'dg-guestbook-entries';
-const guestbookForm = document.getElementById('guestbookForm');
-const guestbookList = document.getElementById('guestbookList');
+const GUESTBOOK_KEY  = 'dg-guestbook-entries';
+const guestbookForm  = document.getElementById('guestbookForm');
+const guestbookList  = document.getElementById('guestbookList');
 
 function loadGuestbookEntries() {
   try {
@@ -327,10 +344,10 @@ function renderGuestbook() {
   }
   entries.slice().reverse().forEach(entry => {
     const item = document.createElement('div');
-    item.className = 'guestbook-entry';
+    item.className  = 'guestbook-entry';
     item.dataset.ts = entry.ts;
     const safeName = entry.name.replace(/</g, '&lt;');
-    const safeMsg = entry.message.replace(/</g, '&lt;');
+    const safeMsg  = entry.message.replace(/</g, '&lt;');
     item.innerHTML = `
       <button class="gb-delete" data-ts="${entry.ts}" aria-label="Delete this note" title="Delete this note">
         <i class="bi bi-trash3"></i>
@@ -347,9 +364,9 @@ function deleteGuestbookEntry(ts) {
   renderGuestbook();
 }
 
-/* ── Custom confirm dialog (replaces the native browser confirm) ── */
-const confirmOverlay = document.getElementById('confirmOverlay');
-const confirmCancel = document.getElementById('confirmCancel');
+/* ── Custom confirm dialog ────────────────────────────────── */
+const confirmOverlay   = document.getElementById('confirmOverlay');
+const confirmCancel    = document.getElementById('confirmCancel');
 const confirmDeleteBtn = document.getElementById('confirmDelete');
 let pendingDeleteEl = null;
 let pendingDeleteTs = null;
@@ -389,7 +406,7 @@ if (guestbookForm) {
   renderGuestbook();
   guestbookForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    const name = document.getElementById('gbName').value.trim();
+    const name    = document.getElementById('gbName').value.trim();
     const message = document.getElementById('gbMessage').value.trim();
     if (!name || !message) return;
 
@@ -400,7 +417,6 @@ if (guestbookForm) {
     guestbookForm.reset();
   });
 
-  /* Event delegation: catches clicks on delete buttons even after re-render */
   guestbookList.addEventListener('click', (e) => {
     const btn = e.target.closest('.gb-delete');
     if (!btn) return;
