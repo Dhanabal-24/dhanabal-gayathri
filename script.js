@@ -7,6 +7,33 @@
 const RELATIONSHIP_START = new Date('2020-10-19T00:00:00');
 const ANNIVERSARY_MONTH_DAY = { month: 9, day: 19 }; // month is 0-indexed (9 = October)
 
+/* ── Firebase Firestore (Guestbook) ──────────────────────── */
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  deleteDoc,
+  doc,
+  onSnapshot,
+  orderBy,
+  query,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDiwgIxMRewq5jqMMmdELqdXt8GM7GKEtk",
+  authDomain: "dg-portal-294fa.firebaseapp.com",
+  projectId: "dg-portal-294fa",
+  storageBucket: "dg-portal-294fa.firebasestorage.app",
+  messagingSenderId: "853142910392",
+  appId: "1:853142910392:web:50e8af3db3defd15de8b4d",
+  measurementId: "G-G8JZYTSSFH"
+};
+
+const app = initializeApp(firebaseConfig);
+const db  = getFirestore(app);
+
 /* ── Navbar scroll shadow ────────────────────────────────── */
 const nav = document.getElementById('mainNav');
 window.addEventListener('scroll', () => {
@@ -213,10 +240,9 @@ bucketCards.forEach(card => {
 /* ── Playlist: play / pause actual audio ─────────────────── */
 const trackPlayButtons = document.querySelectorAll('.track-play');
 
-// Start times in seconds for each track (by audio element id)
 const TRACK_START_TIMES = {
-  'audio-minnalvala':  58,   // 0:56
-  'audio-oh-oh-uyire': 172,  // 2:52
+  'audio-minnalvala':  58,
+  'audio-oh-oh-uyire': 172,
 };
 
 function stopAllTracks(exceptBtn) {
@@ -240,7 +266,6 @@ trackPlayButtons.forEach(btn => {
 
   const startTime = TRACK_START_TIMES[btn.dataset.audio] ?? 0;
 
-  // Jump to the defined start time as soon as the browser knows the duration
   audio.addEventListener('loadedmetadata', () => {
     audio.currentTime = startTime;
   });
@@ -248,7 +273,6 @@ trackPlayButtons.forEach(btn => {
   btn.addEventListener('click', () => {
     if (audio.paused) {
       stopAllTracks(btn);
-      // Ensure correct start time is set before playing
       if (audio.currentTime < startTime) {
         audio.currentTime = startTime;
       }
@@ -271,7 +295,7 @@ trackPlayButtons.forEach(btn => {
   audio.addEventListener('ended', () => {
     icon.className = 'bi bi-play-fill';
     row.classList.remove('playing');
-    audio.currentTime = startTime; // reset to start time, not 0:00
+    audio.currentTime = startTime;
   });
 });
 
@@ -313,66 +337,21 @@ if (document.getElementById('placesMap') && window.L) {
   map.on('click', () => map.scrollWheelZoom.enable());
 }
 
-/* ── Guestbook (saved locally on this device) ────────────── */
-const GUESTBOOK_KEY  = 'dg-guestbook-entries';
-const guestbookForm  = document.getElementById('guestbookForm');
-const guestbookList  = document.getElementById('guestbookList');
-
-function loadGuestbookEntries() {
-  try {
-    const raw = localStorage.getItem(GUESTBOOK_KEY);
-    return raw ? JSON.parse(raw) : [];
-  } catch {
-    return [];
-  }
-}
-
-function saveGuestbookEntries(entries) {
-  try {
-    localStorage.setItem(GUESTBOOK_KEY, JSON.stringify(entries));
-  } catch {
-    /* storage unavailable — entries simply won't persist */
-  }
-}
-
-function renderGuestbook() {
-  const entries = loadGuestbookEntries();
-  guestbookList.innerHTML = '';
-  if (entries.length === 0) {
-    guestbookList.innerHTML = '<p class="guestbook-empty">No notes yet — be the first to leave one.</p>';
-    return;
-  }
-  entries.slice().reverse().forEach(entry => {
-    const item = document.createElement('div');
-    item.className  = 'guestbook-entry';
-    item.dataset.ts = entry.ts;
-    const safeName = entry.name.replace(/</g, '&lt;');
-    const safeMsg  = entry.message.replace(/</g, '&lt;');
-    item.innerHTML = `
-      <button class="gb-delete" data-ts="${entry.ts}" aria-label="Delete this note" title="Delete this note">
-        <i class="bi bi-trash3"></i>
-      </button>
-      <div class="gb-msg">${safeMsg}</div>
-      <div class="gb-name">— ${safeName}</div>`;
-    guestbookList.appendChild(item);
-  });
-}
-
-function deleteGuestbookEntry(ts) {
-  const entries = loadGuestbookEntries().filter(entry => String(entry.ts) !== String(ts));
-  saveGuestbookEntries(entries);
-  renderGuestbook();
-}
+/* ══════════════════════════════════════════════════════════
+   GUESTBOOK — Firebase Firestore (shared across all devices)
+══════════════════════════════════════════════════════════ */
+const guestbookForm = document.getElementById('guestbookForm');
+const guestbookList = document.getElementById('guestbookList');
 
 /* ── Custom confirm dialog ────────────────────────────────── */
 const confirmOverlay   = document.getElementById('confirmOverlay');
 const confirmCancel    = document.getElementById('confirmCancel');
 const confirmDeleteBtn = document.getElementById('confirmDelete');
+let pendingDeleteId = null;
 let pendingDeleteEl = null;
-let pendingDeleteTs = null;
 
-function openConfirmDialog(ts, entryEl) {
-  pendingDeleteTs = ts;
+function openConfirmDialog(id, entryEl) {
+  pendingDeleteId = id;
   pendingDeleteEl = entryEl;
   confirmOverlay.classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -382,7 +361,7 @@ function openConfirmDialog(ts, entryEl) {
 function closeConfirmDialog() {
   confirmOverlay.classList.remove('open');
   document.body.style.overflow = '';
-  pendingDeleteTs = null;
+  pendingDeleteId = null;
   pendingDeleteEl = null;
 }
 
@@ -394,33 +373,87 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && confirmOverlay.classList.contains('open')) closeConfirmDialog();
 });
 
-confirmDeleteBtn.addEventListener('click', () => {
-  if (pendingDeleteTs === null) return;
+confirmDeleteBtn.addEventListener('click', async () => {
+  if (!pendingDeleteId) return;
   pendingDeleteEl?.classList.add('removing');
-  const ts = pendingDeleteTs;
+  const idToDelete = pendingDeleteId;
   closeConfirmDialog();
-  setTimeout(() => deleteGuestbookEntry(ts), 180);
+  setTimeout(async () => {
+    try {
+      await deleteDoc(doc(db, 'guestbook', idToDelete));
+    } catch (err) {
+      console.error('Delete failed:', err);
+    }
+  }, 180);
 });
 
+/* ── Render a single entry element ───────────────────────── */
+function buildEntryEl(id, data) {
+  const item = document.createElement('div');
+  item.className  = 'guestbook-entry';
+  item.dataset.id = id;
+  // Safely escape HTML but allow emojis (they are plain unicode, not HTML)
+  const safeName = data.name.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  const safeMsg  = data.message.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  item.innerHTML = `
+    <button class="gb-delete" data-id="${id}" aria-label="Delete this note" title="Delete this note">
+      <i class="bi bi-trash3"></i>
+    </button>
+    <div class="gb-msg">${safeMsg}</div>
+    <div class="gb-name">— ${safeName}</div>`;
+  return item;
+}
+
+/* ── Real-time listener — updates on EVERY device instantly ─ */
 if (guestbookForm) {
-  renderGuestbook();
-  guestbookForm.addEventListener('submit', (e) => {
+  const q = query(collection(db, 'guestbook'), orderBy('createdAt', 'desc'));
+
+  onSnapshot(q, (snapshot) => {
+    guestbookList.innerHTML = '';
+    if (snapshot.empty) {
+      guestbookList.innerHTML = '<p class="guestbook-empty">No notes yet — be the first to leave one.</p>';
+      return;
+    }
+    snapshot.forEach(docSnap => {
+      guestbookList.appendChild(buildEntryEl(docSnap.id, docSnap.data()));
+    });
+  }, (err) => {
+    console.error('Firestore listener error:', err);
+    guestbookList.innerHTML = '<p class="guestbook-empty">Couldn\'t load notes. Check your connection.</p>';
+  });
+
+  /* ── Submit new note ──────────────────────────────────── */
+  guestbookForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const name    = document.getElementById('gbName').value.trim();
     const message = document.getElementById('gbMessage').value.trim();
     if (!name || !message) return;
 
-    const entries = loadGuestbookEntries();
-    entries.push({ name, message, ts: Date.now() });
-    saveGuestbookEntries(entries);
-    renderGuestbook();
-    guestbookForm.reset();
+    const submitBtn = guestbookForm.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="bi bi-hourglass-split"></i> Saving…';
+
+    try {
+      await addDoc(collection(db, 'guestbook'), {
+        name,
+        message,
+        createdAt: serverTimestamp()
+      });
+      guestbookForm.reset();
+    } catch (err) {
+      console.error('Could not save note:', err);
+      alert('Something went wrong — note not saved. Please try again.');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = '<i class="bi bi-send-fill"></i> Leave a note';
+    }
   });
 
+  /* ── Delete via confirm dialog ────────────────────────── */
   guestbookList.addEventListener('click', (e) => {
     const btn = e.target.closest('.gb-delete');
     if (!btn) return;
     const entryEl = btn.closest('.guestbook-entry');
-    openConfirmDialog(btn.dataset.ts, entryEl);
+    openConfirmDialog(btn.dataset.id, entryEl);
   });
 }
