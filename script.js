@@ -57,6 +57,15 @@ function closeMenu() {
   navIcon.className = 'bi bi-list';
 }
 
+// Close the mobile menu whenever one of its links is tapped.
+// (Inline onclick="closeMenu()" attributes in the HTML don't work here because
+// this file is loaded as an ES module — top-level functions in a module are
+// NOT attached to window, so the browser can't find closeMenu() from inline
+// HTML. Wiring it up here, where closeMenu is in scope, fixes that.)
+menu.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', closeMenu);
+});
+
 /* ── Scroll reveal ───────────────────────────────────────── */
 const revealEls = document.querySelectorAll('.reveal');
 const observer = new IntersectionObserver((entries) => {
