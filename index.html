@@ -37,6 +37,7 @@
         <a href="#gallery">Gallery</a>
         <a href="#journal">Journal</a>
         <a href="#openwhen">Open When</a>
+        <a href="#conversations">Conversations</a>
         <a href="#places">Places</a>
         <a href="#bucket">Bucket List</a>
         <a href="#future">Future</a>
@@ -56,6 +57,7 @@
       <a href="#journal"  onclick="closeMenu()">Journal</a>
       <a href="#notes"    onclick="closeMenu()">Love Notes</a>
       <a href="#openwhen" onclick="closeMenu()">Open When</a>
+      <a href="#conversations" onclick="closeMenu()">Conversations</a>
       <a href="#places"   onclick="closeMenu()">Places</a>
       <a href="#playlist" onclick="closeMenu()">Playlist</a>
       <a href="#bucket"   onclick="closeMenu()">Bucket List</a>
@@ -903,6 +905,28 @@ It wasn’t just a reply—it was a feeling he had been holding back for days, f
   </section>
 
   <!-- ══════════════════════════════════════════════
+       CONVERSATIONS WE NEVER FORGOT
+  ══════════════════════════════════════════════ -->
+  <section id="conversations" class="section-pad">
+    <div class="max-w">
+      <div class="section-header centered mb-5">
+        <p class="section-eyebrow reveal">Conversations We Never Forgot</p>
+        <h2 class="section-title reveal mt-2">The little conversations that quietly became our story.</h2>
+        <p class="section-subtitle reveal mt-2" style="margin-inline:auto">
+          Some messages were ordinary. Together, they became unforgettable.
+        </p>
+      </div>
+
+      <div class="convo-wrap reveal">
+        <div class="convo-replay-label" id="convoReplayLabel">Replay #01</div>
+        <div class="convo-card" id="convoCard" aria-live="polite">
+          <div class="convo-thread" id="convoThread"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
        GUESTBOOK
   ══════════════════════════════════════════════ -->
   <section id="guestbook" class="bg-surface section-pad">
@@ -978,6 +1002,7 @@ It wasn’t just a reply—it was a feeling he had been holding back for days, f
           <ul class="footer-links">
             <li><a href="#notes">Love Notes</a></li>
             <li><a href="#openwhen">Open When</a></li>
+            <li><a href="#conversations">Conversations</a></li>
             <li><a href="#places">Our Places</a></li>
             <li><a href="#playlist">Playlist</a></li>
             <li><a href="#bucket">Bucket List</a></li>

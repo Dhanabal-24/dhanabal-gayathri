@@ -405,6 +405,228 @@ document.addEventListener('click', (e) => {
 });
 
 /* ══════════════════════════════════════════════════════════
+   CONVERSATIONS WE NEVER FORGOT — replay engine
+══════════════════════════════════════════════════════════ */
+const conversations = [
+  [
+    { who: 'd', text: 'Saaptiya?' },
+    { who: 'g', text: 'Ippo than.' },
+    { who: 'd', text: 'Enna sapta?' },
+    { who: 'g', text: 'Dosai.' },
+    { who: 'd', text: 'Good girl.' },
+  ],
+  [
+    { who: 'd', text: 'Reached ah?' },
+    { who: 'g', text: 'Reached.' },
+    { who: 'd', text: 'Pathukitu po.' },
+    { who: 'g', text: 'Seri.' },
+  ],
+  [
+    { who: 'g', text: 'Enna panra?' },
+    { who: 'd', text: 'Unna nenachitu iruken.' },
+    { who: 'g', text: 'Poi solladha.' },
+    { who: 'd', text: 'Nijam.' },
+  ],
+  [
+    { who: 'd', text: 'Call pannalama?' },
+    { who: 'g', text: '5 mins.' },
+    { who: 'd', text: 'Neenga sonna 5 mins na...' },
+    { who: 'g', text: 'Theriyum.' },
+  ],
+  [
+    { who: 'd', text: 'Miss pannuren.' },
+    { who: 'g', text: 'Naanum.' },
+    { who: 'd', text: 'Seekiram va.' },
+    { who: 'g', text: 'Kandipa.' },
+  ],
+];
+
+const convoCard       = document.getElementById('convoCard');
+const convoThread     = document.getElementById('convoThread');
+const convoReplayLabel = document.getElementById('convoReplayLabel');
+
+if (convoCard && convoThread) {
+
+  const CONVO_NAMES = { d: 'Dhanabal', g: 'Gayathri' };
+  const TYPING_MS        = 900;   // typing indicator duration before a message lands
+  const CHAR_MS          = 28;    // ms per character while "typing" a bubble
+  const BETWEEN_MSG_MS   = 350;   // pause after a message finishes before next typing indicator
+  const BETWEEN_CONVO_MS = 900;   // brief breath between one conversation ending and the next starting
+  const MAX_ROWS_KEPT    = 40;    // trim older rows so the DOM doesn't grow forever
+
+  let convoIndex = 0;
+  let convoRunning = false;
+  let convoTimeouts = [];
+  let convoActive = false; // whether the section is in view and should be animating
+
+  function convoClearTimers() {
+    convoTimeouts.forEach(clearTimeout);
+    convoTimeouts = [];
+  }
+
+  function convoWait(ms) {
+    return new Promise(resolve => {
+      const id = setTimeout(resolve, ms);
+      convoTimeouts.push(id);
+    });
+  }
+
+  function convoScrollToBottom() {
+    convoCard.scrollTo({ top: convoCard.scrollHeight, behavior: 'smooth' });
+  }
+
+  function convoTrimOldRows() {
+    while (convoThread.children.length > MAX_ROWS_KEPT) {
+      convoThread.removeChild(convoThread.firstElementChild);
+    }
+  }
+
+  function buildRow(who) {
+    const row = document.createElement('div');
+    row.className = `convo-row from-${who}`;
+
+    const avatar = document.createElement('div');
+    avatar.className = 'convo-avatar';
+    avatar.textContent = who === 'd' ? 'D' : 'G';
+    avatar.setAttribute('aria-hidden', 'true');
+
+    const bubble = document.createElement('div');
+    bubble.className = 'convo-bubble';
+
+    row.appendChild(avatar);
+    row.appendChild(bubble);
+    return { row, bubble };
+  }
+
+  function buildTypingRow(who) {
+    const wrapRow = document.createElement('div');
+    wrapRow.className = `convo-row from-${who}`;
+
+    const avatar = document.createElement('div');
+    avatar.className = 'convo-avatar';
+    avatar.textContent = who === 'd' ? 'D' : 'G';
+    avatar.setAttribute('aria-hidden', 'true');
+
+    const typing = document.createElement('div');
+    typing.className = 'convo-typing';
+    typing.setAttribute('aria-label', `${CONVO_NAMES[who]} is typing`);
+    typing.innerHTML = '<span></span><span></span><span></span>';
+
+    wrapRow.appendChild(avatar);
+    wrapRow.appendChild(typing);
+    return wrapRow;
+  }
+
+  function buildDivider(label) {
+    const divider = document.createElement('div');
+    divider.className = 'convo-divider';
+    divider.textContent = label;
+    return divider;
+  }
+
+  async function typeIntoBubble(bubble, text) {
+    const cursor = document.createElement('span');
+    cursor.className = 'convo-cursor';
+    bubble.appendChild(document.createTextNode(''));
+    bubble.appendChild(cursor);
+
+    for (let i = 0; i < text.length; i++) {
+      if (!convoActive) return;
+      bubble.insertBefore(document.createTextNode(text[i]), cursor);
+      convoScrollToBottom();
+      await convoWait(CHAR_MS);
+    }
+    cursor.remove();
+  }
+
+  async function playConversation(convo) {
+    for (let i = 0; i < convo.length; i++) {
+      if (!convoActive) return;
+      const { who, text } = convo[i];
+
+      // typing indicator
+      const typingRow = buildTypingRow(who);
+      convoThread.appendChild(typingRow);
+      convoScrollToBottom();
+      await convoWait(TYPING_MS);
+      if (!convoActive) return;
+      typingRow.remove();
+
+      // actual message, typed character by character
+      const { row, bubble } = buildRow(who);
+      convoThread.appendChild(row);
+      await typeIntoBubble(bubble, text);
+      if (!convoActive) return;
+
+      convoTrimOldRows();
+      await convoWait(BETWEEN_MSG_MS);
+    }
+  }
+
+  async function convoLoop() {
+    if (convoRunning) return;
+    convoRunning = true;
+
+    while (convoActive) {
+      const cycle = convoIndex % conversations.length;
+      const convo = conversations[cycle];
+      convoReplayLabel.textContent = `Replay #${String(cycle + 1).padStart(2, '0')}`;
+
+      if (convoIndex > 0) {
+        convoThread.appendChild(buildDivider(`Replay #${String(cycle + 1).padStart(2, '0')}`));
+        convoScrollToBottom();
+      }
+
+      await playConversation(convo);
+      if (!convoActive) break;
+
+      await convoWait(BETWEEN_CONVO_MS);
+      if (!convoActive) break;
+
+      convoIndex++;
+    }
+
+    convoRunning = false;
+  }
+
+  function startConvo() {
+    if (convoActive) return;
+    convoActive = true;
+    convoLoop();
+  }
+
+  function stopConvo() {
+    convoActive = false;
+    convoClearTimers();
+  }
+
+  const convoObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        startConvo();
+      } else {
+        stopConvo();
+      }
+    });
+  }, { threshold: 0.3 });
+
+  convoObserver.observe(convoCard);
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    // Show the first conversation fully formed, no animation loop.
+    convoObserver.disconnect();
+    const convo = conversations[0];
+    convoThread.innerHTML = '';
+    convo.forEach(({ who, text }) => {
+      const { row, bubble } = buildRow(who);
+      bubble.textContent = text;
+      convoThread.appendChild(row);
+    });
+    convoReplayLabel.textContent = 'Replay #01';
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
    GUESTBOOK — Firebase Firestore (shared across all devices)
 ══════════════════════════════════════════════════════════ */
 const guestbookForm = document.getElementById('guestbookForm');
