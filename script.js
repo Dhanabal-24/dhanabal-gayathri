@@ -533,3 +533,94 @@ if (guestbookForm) {
     openConfirmDialog(btn.dataset.id, entryEl);
   });
 }
+
+/* ══════════════════════════════════════════════════════════
+   "IF YOU HADN'T REPLIED..." — interactive story
+══════════════════════════════════════════════════════════ */
+(() => {
+  const stage    = document.getElementById('hrStage');
+  if (!stage) return;
+
+  const sceneInitial = document.getElementById('hrSceneInitial');
+  const sceneIgnore   = document.getElementById('hrSceneIgnore');
+  const sceneReply    = document.getElementById('hrSceneReply');
+
+  const replyBtn  = document.getElementById('hrReplyBtn');
+  const ignoreBtn = document.getElementById('hrIgnoreBtn');
+
+  const ignoreLines  = document.querySelectorAll('#hrIgnoreLines .hr-line');
+  const ignorePause  = document.getElementById('hrIgnorePause');
+  const ignoreRelief = document.getElementById('hrIgnoreRelief');
+  const restartFromIgnore = document.getElementById('hrRestartFromIgnore');
+
+  const chainEls   = document.querySelectorAll('#hrReplyChain .hr-chain-step, #hrReplyChain .hr-chain-arrow');
+  const replyFinal = document.getElementById('hrReplyFinal');
+  const wordEls    = document.querySelectorAll('#hrWordChain .hr-word, #hrWordChain .hr-word-arrow');
+  const restartFromReply = document.getElementById('hrRestartFromReply');
+
+  let hrTimers = [];
+  const hrDelay = (fn, ms) => hrTimers.push(setTimeout(fn, ms));
+  const clearHrTimers = () => { hrTimers.forEach(clearTimeout); hrTimers = []; };
+  const resetEls = (els) => els.forEach(el => el.classList.remove('hr-shown'));
+
+  function showScene(scene) {
+    [sceneInitial, sceneIgnore, sceneReply].forEach(s => {
+      s.classList.remove('hr-active');
+      s.setAttribute('aria-hidden', 'true');
+    });
+    scene.classList.add('hr-active');
+    scene.setAttribute('aria-hidden', 'false');
+  }
+
+  function playIgnoreSequence() {
+    clearHrTimers();
+    stage.classList.add('hr-dim');
+    resetEls(ignoreLines);
+    ignorePause.classList.remove('hr-shown');
+    ignoreRelief.classList.remove('hr-shown');
+    showScene(sceneIgnore);
+
+    let delay = 300;
+    ignoreLines.forEach(line => {
+      hrDelay(() => line.classList.add('hr-shown'), delay);
+      delay += 500;
+    });
+    delay += 500;
+    hrDelay(() => ignorePause.classList.add('hr-shown'), delay);
+    delay += 2000;
+    hrDelay(() => ignoreRelief.classList.add('hr-shown'), delay);
+  }
+
+  function playReplySequence() {
+    clearHrTimers();
+    stage.classList.remove('hr-dim');
+    resetEls(chainEls);
+    replyFinal.classList.remove('hr-shown');
+    resetEls(wordEls);
+    showScene(sceneReply);
+
+    let delay = 300;
+    chainEls.forEach(el => {
+      hrDelay(() => el.classList.add('hr-shown'), delay);
+      delay += 260;
+    });
+    delay += 450;
+    hrDelay(() => replyFinal.classList.add('hr-shown'), delay);
+    delay += 500;
+    wordEls.forEach(el => {
+      hrDelay(() => el.classList.add('hr-shown'), delay);
+      delay += 320;
+    });
+  }
+
+  function resetToInitial() {
+    clearHrTimers();
+    stage.classList.remove('hr-dim');
+    showScene(sceneInitial);
+  }
+
+  replyBtn.addEventListener('click', playReplySequence);
+  ignoreBtn.addEventListener('click', playIgnoreSequence);
+  restartFromIgnore.addEventListener('click', resetToInitial);
+  restartFromReply.addEventListener('click', resetToInitial);
+})();
