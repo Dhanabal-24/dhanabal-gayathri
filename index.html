@@ -813,6 +813,93 @@ It wasn’t just a reply—it was a feeling he had been holding back for days, f
     </div>
   </section>
 
+   <!-- ══════════════════════════════════════════════
+       IF YOU HADN'T REPLIED... (interactive story)
+  ══════════════════════════════════════════════ -->
+  <section id="hadnt-replied" class="bg-surface section-pad">
+    <div class="max-w">
+      <div class="section-header centered mb-5">
+        <p class="section-eyebrow reveal">A What If</p>
+        <h2 class="section-title reveal mt-2">If We had never texted</h2>
+        <p class="section-subtitle reveal mt-2" style="margin-inline:auto">
+          A single decision changed everything.<br>
+          Sometimes the smallest moments create the biggest stories.
+        </p>
+      </div>
+
+      <div class="hr-stage reveal" id="hrStage">
+
+        <!-- Initial prompt -->
+        <div class="hr-scene hr-scene-initial hr-active" id="hrSceneInitial" data-scene="initial" aria-hidden="false">
+          <div class="hr-date">October 19, 2020</div>
+          <div class="hr-sub">A message arrives.</div>
+          <div class="hr-message">&ldquo; H &rdquo;</div>
+          <div class="hr-actions">
+            <button class="btn-primary" id="hrReplyBtn"><i class="bi bi-chat-heart"></i> Reply</button>
+            <button class="btn-secondary" id="hrIgnoreBtn"><i class="bi bi-x-circle"></i> Ignore</button>
+          </div>
+        </div>
+
+        <!-- Ignore branch -->
+        <div class="hr-scene hr-scene-ignore" id="hrSceneIgnore" data-scene="ignore" aria-hidden="true">
+          <div class="hr-lines" id="hrIgnoreLines">
+            <p class="hr-line">No first call.</p>
+            <p class="hr-line">No first selfie.</p>
+            <p class="hr-line">No terrace sunsets.</p>
+            <p class="hr-line">No long late-night conversations.</p>
+            <p class="hr-line">No birthday surprises.</p>
+            <p class="hr-line">No train journeys together.</p>
+            <p class="hr-line">No memories to revisit.</p>
+            <p class="hr-line hr-line-strong">No us.</p>
+          </div>
+          <div class="hr-pause" id="hrIgnorePause">
+            <p class="hr-whisper">I cant even</p>
+            <p class="hr-whisper">think of that situation right now.</p>
+          </div>
+          <div class="hr-relief" id="hrIgnoreRelief">
+            <p class="hr-relief-text">Thankfully,<br>that isn't our story.</p>
+            <button class="btn-secondary hr-restart" id="hrRestartFromIgnore"><i class="bi bi-arrow-counterclockwise"></i> Begin again</button>
+          </div>
+        </div>
+
+        <!-- Reply branch -->
+        <div class="hr-scene hr-scene-reply" id="hrSceneReply" data-scene="reply" aria-hidden="true">
+          <div class="hr-chain" id="hrReplyChain">
+            <div class="hr-chain-step"><span>&ldquo;H&rdquo;</span></div>
+            <div class="hr-chain-arrow">↓</div>
+            <div class="hr-chain-step"><span>First conversation.</span></div>
+            <div class="hr-chain-arrow">↓</div>
+            <div class="hr-chain-step"><span>First call.</span></div>
+            <div class="hr-chain-arrow">↓</div>
+            <div class="hr-chain-step"><span>First selfie.</span></div>
+            <div class="hr-chain-arrow">↓</div>
+            <div class="hr-chain-step"><span>First outing.</span></div>
+            <div class="hr-chain-arrow">↓</div>
+            <div class="hr-chain-step"><span>Years of memories.</span></div>
+            <div class="hr-chain-arrow">↓</div>
+            <div class="hr-chain-step"><span>Countless conversations.</span></div>
+            <div class="hr-chain-arrow">↓</div>
+            <div class="hr-chain-step"><span>A story still being written.</span></div>
+          </div>
+          <div class="hr-final" id="hrReplyFinal">
+            <p class="hr-final-text">All because one message was answered.</p>
+            <div class="hr-word-chain" id="hrWordChain">
+              <span class="hr-word">&ldquo;H&rdquo;</span>
+              <span class="hr-word-arrow">↓</span>
+              <span class="hr-word">&ldquo;Hi&rdquo;</span>
+              <span class="hr-word-arrow">↓</span>
+              <span class="hr-word">&ldquo;Whatsapp la msg pannalamaa&rdquo;</span>
+              <span class="hr-word-arrow">↓</span>
+              <span class="hr-word hr-word-final">&ldquo;Us&rdquo;</span>
+            </div>
+            <button class="btn-secondary hr-restart" id="hrRestartFromReply"><i class="bi bi-arrow-counterclockwise"></i> Replay</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- ══════════════════════════════════════════════
        OPEN WHEN...
   ══════════════════════════════════════════════ -->
@@ -926,92 +1013,7 @@ It wasn’t just a reply—it was a feeling he had been holding back for days, f
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════════════
-       IF YOU HADN'T REPLIED... (interactive story)
-  ══════════════════════════════════════════════ -->
-  <section id="hadnt-replied" class="bg-surface section-pad">
-    <div class="max-w">
-      <div class="section-header centered mb-5">
-        <p class="section-eyebrow reveal">A What If</p>
-        <h2 class="section-title reveal mt-2">If We had never texted</h2>
-        <p class="section-subtitle reveal mt-2" style="margin-inline:auto">
-          A single decision changed everything.<br>
-          Sometimes the smallest moments create the biggest stories.
-        </p>
-      </div>
-
-      <div class="hr-stage reveal" id="hrStage">
-
-        <!-- Initial prompt -->
-        <div class="hr-scene hr-scene-initial hr-active" id="hrSceneInitial" data-scene="initial" aria-hidden="false">
-          <div class="hr-date">October 19, 2020</div>
-          <div class="hr-sub">A message arrives.</div>
-          <div class="hr-message">&ldquo; H &rdquo;</div>
-          <div class="hr-actions">
-            <button class="btn-primary" id="hrReplyBtn"><i class="bi bi-chat-heart"></i> Reply</button>
-            <button class="btn-secondary" id="hrIgnoreBtn"><i class="bi bi-x-circle"></i> Ignore</button>
-          </div>
-        </div>
-
-        <!-- Ignore branch -->
-        <div class="hr-scene hr-scene-ignore" id="hrSceneIgnore" data-scene="ignore" aria-hidden="true">
-          <div class="hr-lines" id="hrIgnoreLines">
-            <p class="hr-line">No first call.</p>
-            <p class="hr-line">No first selfie.</p>
-            <p class="hr-line">No terrace sunsets.</p>
-            <p class="hr-line">No long late-night conversations.</p>
-            <p class="hr-line">No birthday surprises.</p>
-            <p class="hr-line">No train journeys together.</p>
-            <p class="hr-line">No memories to revisit.</p>
-            <p class="hr-line hr-line-strong">No us.</p>
-          </div>
-          <div class="hr-pause" id="hrIgnorePause">
-            <p class="hr-whisper">I cant even</p>
-            <p class="hr-whisper">think of that situation right now.</p>
-          </div>
-          <div class="hr-relief" id="hrIgnoreRelief">
-            <p class="hr-relief-text">Thankfully,<br>that isn't our story.</p>
-            <button class="btn-secondary hr-restart" id="hrRestartFromIgnore"><i class="bi bi-arrow-counterclockwise"></i> Begin again</button>
-          </div>
-        </div>
-
-        <!-- Reply branch -->
-        <div class="hr-scene hr-scene-reply" id="hrSceneReply" data-scene="reply" aria-hidden="true">
-          <div class="hr-chain" id="hrReplyChain">
-            <div class="hr-chain-step"><span>&ldquo;H&rdquo;</span></div>
-            <div class="hr-chain-arrow">↓</div>
-            <div class="hr-chain-step"><span>First conversation.</span></div>
-            <div class="hr-chain-arrow">↓</div>
-            <div class="hr-chain-step"><span>First call.</span></div>
-            <div class="hr-chain-arrow">↓</div>
-            <div class="hr-chain-step"><span>First selfie.</span></div>
-            <div class="hr-chain-arrow">↓</div>
-            <div class="hr-chain-step"><span>First outing.</span></div>
-            <div class="hr-chain-arrow">↓</div>
-            <div class="hr-chain-step"><span>Years of memories.</span></div>
-            <div class="hr-chain-arrow">↓</div>
-            <div class="hr-chain-step"><span>Countless conversations.</span></div>
-            <div class="hr-chain-arrow">↓</div>
-            <div class="hr-chain-step"><span>A story still being written.</span></div>
-          </div>
-          <div class="hr-final" id="hrReplyFinal">
-            <p class="hr-final-text">All because one message was answered.</p>
-            <div class="hr-word-chain" id="hrWordChain">
-              <span class="hr-word">&ldquo;H&rdquo;</span>
-              <span class="hr-word-arrow">↓</span>
-              <span class="hr-word">&ldquo;Hi&rdquo;</span>
-              <span class="hr-word-arrow">↓</span>
-              <span class="hr-word">&ldquo;Whatsapp la msg pannalamaa&rdquo;</span>
-              <span class="hr-word-arrow">↓</span>
-              <span class="hr-word hr-word-final">&ldquo;Us&rdquo;</span>
-            </div>
-            <button class="btn-secondary hr-restart" id="hrRestartFromReply"><i class="bi bi-arrow-counterclockwise"></i> Replay</button>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
+ 
 
   <!-- ══════════════════════════════════════════════
        QUOTE
