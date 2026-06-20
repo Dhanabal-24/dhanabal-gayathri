@@ -367,6 +367,43 @@ if (document.getElementById('placesMap') && window.L) {
   map.on('click', () => map.scrollWheelZoom.enable());
 }
 
+/* ── "Open When..." envelopes ─────────────────────────────── */
+const envelopes = Array.from(document.querySelectorAll('#openwhenGrid [data-envelope]'));
+
+function closeEnvelope(env) {
+  env.classList.remove('open');
+  env.setAttribute('aria-expanded', 'false');
+}
+
+function openEnvelope(env) {
+  envelopes.forEach(other => {
+    if (other !== env) closeEnvelope(other);
+  });
+  const isOpen = env.classList.contains('open');
+  if (isOpen) {
+    closeEnvelope(env);
+  } else {
+    env.classList.add('open');
+    env.setAttribute('aria-expanded', 'true');
+  }
+}
+
+envelopes.forEach(env => {
+  env.addEventListener('click', () => openEnvelope(env));
+  env.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      openEnvelope(env);
+    }
+  });
+});
+
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('#openwhenGrid')) {
+    envelopes.forEach(closeEnvelope);
+  }
+});
+
 /* ══════════════════════════════════════════════════════════
    GUESTBOOK — Firebase Firestore (shared across all devices)
 ══════════════════════════════════════════════════════════ */

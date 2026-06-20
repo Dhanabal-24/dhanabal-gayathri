@@ -1438,6 +1438,158 @@ ul  { list-style: none; padding: 0; margin: 0; }
 }
 .confirm-actions button { flex: 1; justify-content: center; }
 
+/* ── 14d. "Open When..." letters ──────────────────────────── */
+.openwhen-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.envelope {
+  position: relative;
+  cursor: pointer;
+  outline: none;
+}
+
+.envelope-body {
+  position: relative;
+  aspect-ratio: 3/4;
+  isolation: isolate;
+}
+
+/* ── Sealed envelope face ── */
+.envelope-face {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, #fffdf6 0%, #f7f3ec 100%);
+  border: 1px solid #ece4d1;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 18px 14px;
+  text-align: center;
+  z-index: 2;
+  transition: transform .45s var(--ease), box-shadow var(--duration) var(--ease);
+  transform-origin: top center;
+}
+
+.envelope-icon {
+  font-size: 1.4rem;
+  color: var(--color-warm);
+}
+
+.envelope-label {
+  font-family: var(--font-hand);
+  font-size: 1.25rem;
+  line-height: 1.25;
+  font-weight: 600;
+  color: #4a4136;
+  letter-spacing: -.01em;
+}
+
+/* ── Triangular flap, sits above the face, folds open ── */
+.envelope-flap {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 52%;
+  background: linear-gradient(160deg, #f7f3ec 0%, #ece4d1 100%);
+  border: 1px solid #ece4d1;
+  border-bottom: none;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: top center;
+  transition: transform .5s var(--ease);
+  z-index: 3;
+  box-shadow: var(--shadow-xs);
+}
+
+/* ── Letter, hidden behind the face until opened ── */
+.envelope-letter {
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  bottom: 6%;
+  top: 10%;
+  background: #fffefb;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
+  padding: 22px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  opacity: 0;
+  transform: translateY(10%) scale(.92);
+  transition: opacity .45s var(--ease) .05s, transform .5s var(--ease) .05s;
+  z-index: 1;
+  overflow: auto;
+}
+
+.letter-text {
+  font-family: var(--font-hand);
+  font-size: 1.15rem;
+  line-height: 1.45;
+  color: #4a4136;
+}
+
+.letter-sign {
+  display: block;
+  margin-top: 14px;
+  font-family: var(--font-hand);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-warm);
+  align-self: flex-end;
+}
+
+/* ── Hover (sealed state) ── */
+.envelope-body:hover .envelope-face {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+/* ── Open state ── */
+.envelope.open .envelope-flap {
+  transform: rotateX(180deg);
+  box-shadow: none;
+  z-index: 1;
+}
+.envelope.open .envelope-face {
+  transform: translateY(14%);
+  box-shadow: var(--shadow-xs);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform .45s var(--ease), box-shadow var(--duration) var(--ease), opacity .3s var(--ease);
+}
+.envelope.open .envelope-letter {
+  opacity: 1;
+  transform: translateY(-6%) scale(1);
+  z-index: 4;
+}
+
+.envelope:focus-visible .envelope-face {
+  box-shadow: 0 0 0 3px var(--color-warm-light), var(--shadow-md);
+}
+
+/* ── Responsive ── */
+@media (max-width: 1100px) {
+  .openwhen-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 680px) {
+  .openwhen-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .envelope-body { aspect-ratio: 3/4.2; }
+  .envelope-label { font-size: 1.1rem; }
+  .letter-text { font-size: 1.05rem; }
+}
+@media (max-width: 420px) {
+  .openwhen-grid { grid-template-columns: 1fr 1fr; }
+}
+
 /* ── 15. Quote ───────────────────────────────────────────── */
 #quote {
   background: var(--color-text);

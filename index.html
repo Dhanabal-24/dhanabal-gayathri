@@ -36,6 +36,7 @@
         <a href="#story">Story</a>
         <a href="#gallery">Gallery</a>
         <a href="#journal">Journal</a>
+        <a href="#openwhen">Open When</a>
         <a href="#places">Places</a>
         <a href="#bucket">Bucket List</a>
         <a href="#future">Future</a>
@@ -54,6 +55,7 @@
       <a href="#gallery"  onclick="closeMenu()">Gallery</a>
       <a href="#journal"  onclick="closeMenu()">Journal</a>
       <a href="#notes"    onclick="closeMenu()">Love Notes</a>
+      <a href="#openwhen" onclick="closeMenu()">Open When</a>
       <a href="#places"   onclick="closeMenu()">Places</a>
       <a href="#playlist" onclick="closeMenu()">Playlist</a>
       <a href="#bucket"   onclick="closeMenu()">Bucket List</a>
@@ -812,6 +814,95 @@ It wasn’t just a reply—it was a feeling he had been holding back for days, f
   </section>
 
   <!-- ══════════════════════════════════════════════
+       OPEN WHEN...
+  ══════════════════════════════════════════════ -->
+  <section id="openwhen" class="bg-surface section-pad">
+    <div class="max-w">
+      <div class="section-header centered mb-5">
+        <p class="section-eyebrow reveal">Open When...</p>
+        <h2 class="section-title reveal mt-2">Letters for the moments in between.</h2>
+        <p class="section-subtitle reveal mt-2" style="margin-inline:auto">
+          Some words aren't meant for every day. They're meant for the exact moment you need them.
+        </p>
+      </div>
+
+      <div class="openwhen-grid" id="openwhenGrid">
+
+        <div class="envelope reveal" data-envelope tabindex="0" role="button" aria-expanded="false" aria-controls="letter-miss-me">
+          <div class="envelope-body">
+            <div class="envelope-flap"></div>
+            <div class="envelope-face">
+              <i class="bi bi-envelope-heart envelope-icon"></i>
+              <span class="envelope-label">Open When<br>You Miss Me</span>
+            </div>
+            <div class="envelope-letter" id="letter-miss-me">
+              <p class="letter-text">No matter where we are, you're always one thought away. Every memory, every call, every little conversation still lives with me.</p>
+              <span class="letter-sign">— Always yours</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="envelope reveal" data-envelope tabindex="0" role="button" aria-expanded="false" aria-controls="letter-sad">
+          <div class="envelope-body">
+            <div class="envelope-flap"></div>
+            <div class="envelope-face">
+              <i class="bi bi-envelope-heart envelope-icon"></i>
+              <span class="envelope-label">Open When<br>You're Sad</span>
+            </div>
+            <div class="envelope-letter" id="letter-sad">
+              <p class="letter-text">I wish I could sit beside you right now and remind you that you've overcome every difficult day you've ever faced.</p>
+              <span class="letter-sign">— Always yours</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="envelope reveal" data-envelope tabindex="0" role="button" aria-expanded="false" aria-controls="letter-motivation">
+          <div class="envelope-body">
+            <div class="envelope-flap"></div>
+            <div class="envelope-face">
+              <i class="bi bi-envelope-heart envelope-icon"></i>
+              <span class="envelope-label">Open When You<br>Need Motivation</span>
+            </div>
+            <div class="envelope-letter" id="letter-motivation">
+              <p class="letter-text">Look how far you've already come. The person you are becoming would make your younger self proud.</p>
+              <span class="letter-sign">— Always yours</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="envelope reveal" data-envelope tabindex="0" role="button" aria-expanded="false" aria-controls="letter-angry">
+          <div class="envelope-body">
+            <div class="envelope-flap"></div>
+            <div class="envelope-face">
+              <i class="bi bi-envelope-heart envelope-icon"></i>
+              <span class="envelope-label">Open When You're<br>Angry With Me</span>
+            </div>
+            <div class="envelope-letter" id="letter-angry">
+              <p class="letter-text">Before staying angry too long, remember all the reasons we chose each other. Let's always choose understanding over silence.</p>
+              <span class="letter-sign">— Always yours</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="envelope reveal" data-envelope tabindex="0" role="button" aria-expanded="false" aria-controls="letter-smile">
+          <div class="envelope-body">
+            <div class="envelope-flap"></div>
+            <div class="envelope-face">
+              <i class="bi bi-envelope-heart envelope-icon"></i>
+              <span class="envelope-label">Open When You<br>Need A Smile</span>
+            </div>
+            <div class="envelope-letter" id="letter-smile">
+              <p class="letter-text">Somewhere in our gallery is a photo where neither of us knew what we were doing. We still looked happy.</p>
+              <span class="letter-sign">— Always yours</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
        GUESTBOOK
   ══════════════════════════════════════════════ -->
   <section id="guestbook" class="bg-surface section-pad">
@@ -886,6 +977,7 @@ It wasn’t just a reply—it was a feeling he had been holding back for days, f
           <div class="footer-col-title">More</div>
           <ul class="footer-links">
             <li><a href="#notes">Love Notes</a></li>
+            <li><a href="#openwhen">Open When</a></li>
             <li><a href="#places">Our Places</a></li>
             <li><a href="#playlist">Playlist</a></li>
             <li><a href="#bucket">Bucket List</a></li>
