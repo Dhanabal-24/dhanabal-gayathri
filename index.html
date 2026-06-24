@@ -4,18 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="A private digital collection of memories, milestones and dreams shared by Dhanabal and Gayathri." />
-  <title>A Quite Corner of the Internet — A Love Story</title>
+  <title>A Quiet Corner of the Internet — A Love Story</title>
   <link rel="icon" type="image/png" href="assets/images/favicon.png">
 
   <!-- Bootstrap 5 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
   <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
-  <!-- Google Fonts: a handwritten face for love notes, used sparingly -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
-  <!-- Leaflet (for the Our Places map) -->
+  <!-- Leaflet -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
   <!-- Custom stylesheet -->
   <link rel="stylesheet" href="style.css" />
@@ -28,11 +28,11 @@
   ══════════════════════════════════════════════ -->
   <nav id="mainNav" aria-label="Main navigation">
     <div class="navbar-inner">
-      <a href="#hero" class="navbar-brand-text">D G</a>
+      <a href="#hero" class="navbar-brand-text">D &amp; G</a>
 
       <!-- Desktop links -->
       <div class="nav-links" role="navigation">
-        <a href="#hero">Home</a>
+        <a href="#hero" class="nav-active">Home</a>
         <a href="#story">Story</a>
         <a href="#gallery">Gallery</a>
         <a href="#journal">Journal</a>
@@ -67,7 +67,6 @@
   <!-- ══════════════════════════════════════════════
        HERO
   ══════════════════════════════════════════════ -->
-
   <section id="hero">
     <div class="hero-inner">
 
@@ -75,23 +74,25 @@
       <div class="hero-text">
         <div class="hero-badge fade-up">
           <span class="hero-badge-dot"></span>
-          A private portal · Est. June <span class="coffee-word">2026</span>
+          Private Portal &middot; Est. June 2026
         </div>
         <h1 class="hero-heading fade-up fade-up-d1">
-          Our Quite corner <br>of the <em>internet</em>
+          Our Quiet<br>Corner of the<br><em>Internet</em>
         </h1>
         <p class="hero-subtitle fade-up fade-up-d2">
-          The digital home of Dhanabal and Gayathri, where memories are preserved and dreams take shape.
+          The digital home of Dhanabal and Gayathri — where memories are preserved and dreams take shape.
         </p>
-
         <div class="hero-actions fade-up fade-up-d3">
           <a href="#story"   class="btn-primary"><i class="bi bi-arrow-right-circle"></i> View Story</a>
-          <a href="#gallery" class="btn-secondary"><i class="bi bi-images"></i> Explore Gallery</a>
+          <a href="#gallery" class="btn-secondary"><i class="bi bi-images"></i> Gallery</a>
         </div>
       </div>
 
       <!-- Right: photo frame -->
       <div class="hero-visual fade-up fade-up-d2" id="heroVisual">
+        <div class="hero-chip-float">
+          <i class="bi bi-heart-fill"></i> 5+ Years Together
+        </div>
         <div class="hero-photo-frame">
           <img src="assets/images/rightphotoframe.jpg" alt="Dhanabal and Gayathri" />
         </div>
@@ -108,39 +109,82 @@
   </section>
 
   <!-- ══════════════════════════════════════════════
-       STATS
+       STATS + CATEGORY STRIP
   ══════════════════════════════════════════════ -->
   <section class="bg-surface section-pad-sm">
     <div class="max-w">
-      <div class="stats-grid">
 
+      <!-- Category strip — inspired by SkyBound "Select Category" row -->
+      <div class="category-strip mb-4" style="margin-bottom: 28px;">
+        <div class="category-card">
+          <span class="category-badge badge-top">Top</span>
+          <span class="category-icon">💌</span>
+          <div class="category-name">Memories</div>
+          <div class="category-count">100+ moments</div>
+        </div>
+        <div class="category-card">
+          <span class="category-badge badge-trend">Trending</span>
+          <span class="category-icon">🏍️</span>
+          <div class="category-name">Rides</div>
+          <div class="category-count">Open roads</div>
+        </div>
+        <div class="category-card">
+          <span class="category-badge badge-fav">Fav</span>
+          <span class="category-icon">🌅</span>
+          <div class="category-name">Sunsets</div>
+          <div class="category-count">Terrace gold</div>
+        </div>
+        <div class="category-card">
+          <span class="category-badge badge-top">Top</span>
+          <span class="category-icon">🚂</span>
+          <div class="category-name">Train Trips</div>
+          <div class="category-count">Every station</div>
+        </div>
+        <div class="category-card">
+          <span class="category-badge badge-trend">Trending</span>
+          <span class="category-icon">🏛️</span>
+          <div class="category-name">Temples</div>
+          <div class="category-count">Blessings ahead</div>
+        </div>
+        <div class="category-card">
+          <span class="category-badge badge-fav">Fav</span>
+          <span class="category-icon">🎬</span>
+          <div class="category-name">Movies</div>
+          <div class="category-count">Best company</div>
+        </div>
+        <div class="category-card">
+          <span class="category-badge badge-top">Top</span>
+          <span class="category-icon">🌊</span>
+          <div class="category-name">Beach Days</div>
+          <div class="category-count">Marina waves</div>
+        </div>
+      </div>
+
+      <!-- Stats grid -->
+      <div class="stats-grid">
         <div class="stat-card reveal">
           <i class="bi bi-calendar-heart stat-icon"></i>
           <div class="stat-num">5+</div>
           <div class="stat-label">Years Together</div>
         </div>
-
         <div class="stat-card reveal">
           <i class="bi bi-collection-fill stat-icon"></i>
           <div class="stat-num">100+</div>
           <div class="stat-label">Memories Created</div>
         </div>
-
         <div class="stat-card reveal">
           <i class="bi bi-geo-alt-fill stat-icon"></i>
           <div class="stat-num">12+</div>
           <div class="stat-label">Places Visited</div>
         </div>
-
         <div class="stat-card reveal">
           <i class="bi bi-stars stat-icon"></i>
           <div class="stat-num">50+</div>
           <div class="stat-label">Future Goals</div>
         </div>
-
       </div>
 
-      <!-- Anniversary countdown strip -->
+      <!-- Anniversary countdown -->
       <div class="countdown-strip reveal">
         <div class="countdown-label">
           <i class="bi bi-hourglass-split"></i>
@@ -153,6 +197,7 @@
           <div class="cd-block"><span class="cd-num" id="cdSecs">00</span><span class="cd-unit">sec</span></div>
         </div>
       </div>
+
     </div>
   </section>
 
@@ -171,57 +216,45 @@
         </div>
       </div>
 
-      <!-- Timeline -->
       <div class="timeline">
         <div class="timeline-item reveal">
-          <div class="tl-dot-wrap">
-            <div class="tl-dot"><i class="bi bi-chat-heart-fill"></i></div>
-          </div>
+          <div class="tl-dot-wrap"><div class="tl-dot"><i class="bi bi-chat-heart-fill"></i></div></div>
           <div class="tl-card">
             <div class="tl-date">The Beginning</div>
             <div class="tl-title">First Conversation</div>
-            <div class="tl-desc">October 19, 2020. It all began with a simple "H" on Instagram, a message that seemed ordinary at the time.
-Soon, Instagram chats turned into WhatsApp conversations, and those conversations became a part of our everyday lives.</div>
-          </div>
-        </div>
-        <div class="timeline-item reveal">
-          <div class="tl-dot-wrap">
-            <div class="tl-dot"><i class="bi bi-patch-question-fill"></i></div>
-          </div>
-          <div class="tl-card">
-            <div class="tl-date">The Most loved Question</div>
-            <div class="tl-title">Unexpected Question</div>
-            <div class="tl-desc">One question.
-One silly reply.
-A lifetime of memories waiting to begin.</div>
-          </div>
-        </div>
-        <div class="timeline-item reveal">
-          <div class="tl-dot-wrap">
-            <div class="tl-dot"><i class="bi bi-heart-fill"></i></div>
-          </div>
-          <div class="tl-card">
-            <div class="tl-date">Hour of Love</div>
-            <div class="tl-title">A Silent Proposal</div>
-            <div class="tl-desc">“Kavala padadhinga, Naan iruken,” a line I didn’t fully understand at that time. Later, I came to know that it was actually a hint I didn’t realize then.</div>
-          </div>
-        </div>
-        <div class="timeline-item reveal">
-          <div class="tl-dot-wrap">
-            <div class="tl-dot"><i class="bi bi-emoji-smile-fill"></i></div>
-          </div>
-          <div class="tl-card">
-            <div class="tl-date">Affection became love</div>
-            <div class="tl-title">A Beautiful "Yes"</div>
-            <div class="tl-desc">After a week of overthinking and with the fear of getting caught by family, Dhanabal finally gathered the courage and said, “Yes, I too love you.”
-It wasn’t just a reply—it was a feeling he had been holding back for days, finally finding its way out, all because of her patience, her words, and the way she made him feel safe enough to say it.</div>
+            <div class="tl-desc">October 19, 2020. It all began with a simple "H" on Instagram, a message that seemed ordinary at the time. Soon, Instagram chats turned into WhatsApp conversations, and those conversations became a part of our everyday lives.</div>
           </div>
         </div>
 
         <div class="timeline-item reveal">
-          <div class="tl-dot-wrap">
-            <div class="tl-dot"><i class="bi bi-people-fill"></i></div>
+          <div class="tl-dot-wrap"><div class="tl-dot"><i class="bi bi-patch-question-fill"></i></div></div>
+          <div class="tl-card">
+            <div class="tl-date">The Most Loved Question</div>
+            <div class="tl-title">Unexpected Question</div>
+            <div class="tl-desc">One question. One silly reply. A lifetime of memories waiting to begin.</div>
           </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="tl-dot-wrap"><div class="tl-dot"><i class="bi bi-heart-fill"></i></div></div>
+          <div class="tl-card">
+            <div class="tl-date">Hour of Love</div>
+            <div class="tl-title">A Silent Proposal</div>
+            <div class="tl-desc">"Kavala padadhinga, Naan iruken," a line I didn't fully understand at that time. Later, I came to know that it was actually a hint I didn't realize then.</div>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="tl-dot-wrap"><div class="tl-dot"><i class="bi bi-emoji-smile-fill"></i></div></div>
+          <div class="tl-card">
+            <div class="tl-date">Affection became love</div>
+            <div class="tl-title">A Beautiful "Yes"</div>
+            <div class="tl-desc">After a week of overthinking and with the fear of getting caught by family, Dhanabal finally gathered the courage and said, "Yes, I too love you." It wasn't just a reply — it was a feeling he had been holding back for days, finally finding its way out.</div>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="tl-dot-wrap"><div class="tl-dot"><i class="bi bi-people-fill"></i></div></div>
           <div class="tl-card">
             <div class="tl-date">Soon After</div>
             <div class="tl-title">First Meeting</div>
@@ -230,20 +263,16 @@ It wasn’t just a reply—it was a feeling he had been holding back for days, f
         </div>
 
         <div class="timeline-item reveal">
-          <div class="tl-dot-wrap">
-            <div class="tl-dot"><i class="bi bi-telephone-fill"></i></div>
-          </div>
+          <div class="tl-dot-wrap"><div class="tl-dot"><i class="bi bi-telephone-fill"></i></div></div>
           <div class="tl-card">
             <div class="tl-date">Late nights</div>
             <div class="tl-title">First Call</div>
-            <div class="tl-desc">Our first call wasn't long—just around a minute. Yet, after months of chatting, that brief conversation became a moment we'll always remember.</div>
+            <div class="tl-desc">Our first call wasn't long — just around a minute. Yet, after months of chatting, that brief conversation became a moment we'll always remember.</div>
           </div>
         </div>
 
         <div class="timeline-item reveal">
-          <div class="tl-dot-wrap">
-            <div class="tl-dot"><i class="bi bi-cup-hot-fill"></i></div>
-          </div>
+          <div class="tl-dot-wrap"><div class="tl-dot"><i class="bi bi-cup-hot-fill"></i></div></div>
           <div class="tl-card">
             <div class="tl-date">A special day</div>
             <div class="tl-title">First In Person Meeting</div>
@@ -252,131 +281,86 @@ It wasn’t just a reply—it was a feeling he had been holding back for days, f
         </div>
 
         <div class="timeline-item reveal">
-          <div class="tl-dot-wrap">
-            <div class="tl-dot"><i class="bi bi-camera-fill"></i></div>
-          </div>
+          <div class="tl-dot-wrap"><div class="tl-dot"><i class="bi bi-camera-fill"></i></div></div>
           <div class="tl-card">
             <div class="tl-date">Captured Together</div>
             <div class="tl-title">Our First Image Together</div>
-            <div class="tl-desc">It was around 7:30 PM, a hushed evening when her home stood empty as everyone had gone to town. In that brief window of solitude, we met outside her house, spoke softly, and captured our first selfie together. That exact minute still lingers in my memory, as if time itself paused to preserve it.</div>
+            <div class="tl-desc">It was around 7:30 PM, a hushed evening when her home stood empty. In that brief window of solitude, we met outside her house, spoke softly, and captured our first selfie together. That exact minute still lingers in my memory.</div>
           </div>
         </div>
 
         <div class="timeline-item reveal">
-          <div class="tl-dot-wrap">
-            <div class="tl-dot"><i class="bi bi-bookmark-heart-fill"></i></div>
-          </div>
+          <div class="tl-dot-wrap"><div class="tl-dot"><i class="bi bi-bookmark-heart-fill"></i></div></div>
           <div class="tl-card">
             <div class="tl-date">Always remembered</div>
-            <div class="tl-title">Favorite Memory</div>
+            <div class="tl-title">Favourite Memory</div>
             <div class="tl-desc">On the evening of our first meeting, we stood together on her terrace, watching the sunset paint the sky. Between conversations, photos, shared noodles, and quiet moments, an ordinary evening became one of our most cherished memories.</div>
           </div>
         </div>
+
         <div class="timeline-item reveal">
-          <div class="tl-dot-wrap">
-            <div class="tl-dot"><i class="bi bi-car-front-fill"></i></div>
-          </div>
+          <div class="tl-dot-wrap"><div class="tl-dot"><i class="bi bi-car-front-fill"></i></div></div>
           <div class="tl-card">
             <div class="tl-date">Travel Diaries</div>
             <div class="tl-title">First Car Ride</div>
             <div class="tl-desc">On Pongal, we started our first car ride together from Anjac College and spent some time roaming around the city. Between the conversations, laughter, and little moments along the way, a simple drive became a memory we'll always cherish.</div>
           </div>
         </div>
-
-      </div><!-- /timeline -->
+      </div>
     </div>
   </section>
 
- <!-- ══════════════════════════════════════════════
-     GALLERY
-══════════════════════════════════════════════ -->
-<section id="gallery" class="bg-surface section-pad">
-  <div class="max-w">
-    <div class="section-header centered mb-5">
-      <p class="section-eyebrow reveal">Gallery</p>
-      <h2 class="section-title reveal mt-2">Moments in frames.</h2>
-      <p class="section-subtitle reveal mt-2" style="margin-inline:auto">
-        A curated collection of photographs that tell our story without words. Click any photo to see it full screen.
-      </p>
-    </div>
-
-    <div class="gallery-grid" id="galleryGrid">
-
-      <!-- 1. Tall left column (portrait photo works best here) -->
-      <div class="gallery-item reveal" data-caption="Movie">
-        <img src="assets/images/movie.jpg" alt="Special Moment" />
-        <div class="gallery-overlay">
-          <span class="gallery-overlay-label">
-            <i class="bi bi-heart-fill"></i> Movie
-          </span>
-        </div>
-      </div>
-
-      <!-- 2. Top middle -->
-      <div class="gallery-item reveal" data-caption="Chocolate">
-        <img src="assets/images/choco.jpg" alt="Chocolate" />
-        <div class="gallery-overlay">
-          <span class="gallery-overlay-label">
-            <i class="bi bi-cup-hot"></i> Chocolate
-          </span>
-        </div>
-      </div>
-
-      <!-- 3. Top right -->
-      <div class="gallery-item reveal" data-caption="Temple">
-        <img src="assets/images/temple.jpg" alt="Temple Visit" />
-        <div class="gallery-overlay">
-          <span class="gallery-overlay-label">
-            <i class="bi bi-building"></i> Temple
-          </span>
-        </div>
-      </div>
-
-      <!-- 4. Bottom middle -->
-      <div class="gallery-item reveal" data-caption="Watch">
-        <img src="assets/images/watch.jpg" alt="Celebration" />
-        <div class="gallery-overlay">
-          <span class="gallery-overlay-label">
-            <i class="bi bi-watch"></i> Watch
-          </span>
-        </div>
-      </div>
-
-      <!-- 5. Bottom right -->
-      <div class="gallery-item reveal" data-caption="Gifts">
-        <img src="assets/images/gifts.jpg" alt="Gifts" />
-        <div class="gallery-overlay">
-          <span class="gallery-overlay-label">
-            <i class="bi bi-gift"></i> Gifts
-          </span>
-        </div>
-      </div>
-
-      <!-- 6. Full-width banner at the bottom -->
-      <div class="gallery-item reveal" data-caption="Candid">
-        <img src="assets/images/chocolates.jpg" alt="Candid" />
-        <div class="gallery-overlay">
-          <span class="gallery-overlay-label">
-            <i class="bi bi-camera"></i> Candid
-          </span>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
   <!-- ══════════════════════════════════════════════
-       LIGHTBOX (used by Gallery)
+       GALLERY
   ══════════════════════════════════════════════ -->
+  <section id="gallery" class="bg-surface section-pad">
+    <div class="max-w">
+      <div class="section-header centered mb-5">
+        <p class="section-eyebrow reveal">Gallery</p>
+        <h2 class="section-title reveal mt-2">Moments in frames.</h2>
+        <p class="section-subtitle reveal mt-2" style="margin-inline:auto">
+          A curated collection of photographs that tell our story without words. Click any photo to see it full screen.
+        </p>
+      </div>
+
+      <div class="gallery-grid" id="galleryGrid">
+        <div class="gallery-item reveal" data-caption="Movie">
+          <img src="assets/images/movie.jpg" alt="Special Moment" />
+          <div class="gallery-overlay"><span class="gallery-overlay-label"><i class="bi bi-heart-fill"></i> Movie</span></div>
+        </div>
+        <div class="gallery-item reveal" data-caption="Chocolate">
+          <img src="assets/images/choco.jpg" alt="Chocolate" />
+          <div class="gallery-overlay"><span class="gallery-overlay-label"><i class="bi bi-cup-hot"></i> Chocolate</span></div>
+        </div>
+        <div class="gallery-item reveal" data-caption="Temple">
+          <img src="assets/images/temple.jpg" alt="Temple Visit" />
+          <div class="gallery-overlay"><span class="gallery-overlay-label"><i class="bi bi-building"></i> Temple</span></div>
+        </div>
+        <div class="gallery-item reveal" data-caption="Watch">
+          <img src="assets/images/watch.jpg" alt="Celebration" />
+          <div class="gallery-overlay"><span class="gallery-overlay-label"><i class="bi bi-watch"></i> Watch</span></div>
+        </div>
+        <div class="gallery-item reveal" data-caption="Gifts">
+          <img src="assets/images/gifts.jpg" alt="Gifts" />
+          <div class="gallery-overlay"><span class="gallery-overlay-label"><i class="bi bi-gift"></i> Gifts</span></div>
+        </div>
+        <div class="gallery-item reveal" data-caption="Candid">
+          <img src="assets/images/chocolates.jpg" alt="Candid" />
+          <div class="gallery-overlay"><span class="gallery-overlay-label"><i class="bi bi-camera"></i> Candid</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
     <button class="lb-close" id="lbClose" aria-label="Close"><i class="bi bi-x-lg"></i></button>
-    <button class="lb-nav lb-prev" id="lbPrev" aria-label="Previous photo"><i class="bi bi-chevron-left"></i></button>
+    <button class="lb-nav lb-prev" id="lbPrev" aria-label="Previous"><i class="bi bi-chevron-left"></i></button>
     <div class="lb-content">
       <img id="lbImage" src="" alt="" />
       <div class="lb-caption" id="lbCaption"></div>
     </div>
-    <button class="lb-nav lb-next" id="lbNext" aria-label="Next photo"><i class="bi bi-chevron-right"></i></button>
+    <button class="lb-nav lb-next" id="lbNext" aria-label="Next"><i class="bi bi-chevron-right"></i></button>
   </div>
 
   <!-- ══════════════════════════════════════════════
@@ -388,9 +372,7 @@ It wasn’t just a reply—it was a feeling he had been holding back for days, f
         <div class="jar-icon"><i class="bi bi-stars"></i></div>
         <h3 class="jar-title">Feeling nostalgic?</h3>
         <p class="jar-sub">Pull a random memory out of the jar.</p>
-        <button class="btn-primary" id="jarButton">
-          <i class="bi bi-shuffle"></i> Pick a memory
-        </button>
+        <button class="btn-primary" id="jarButton"><i class="bi bi-shuffle"></i> Pick a memory</button>
         <div class="jar-result" id="jarResult"></div>
       </div>
     </div>
@@ -409,7 +391,6 @@ It wasn’t just a reply—it was a feeling he had been holding back for days, f
         </p>
       </div>
 
-      <!-- Right now strip -->
       <div class="currently-strip reveal">
         <div class="currently-pulse"></div>
         <div class="currently-text">
@@ -419,49 +400,42 @@ It wasn’t just a reply—it was a feeling he had been holding back for days, f
       </div>
 
       <div class="journal-grid">
-
         <div class="journal-card reveal">
           <div class="j-tag"><i class="bi bi-bicycle me-1"></i> Travel</div>
           <div class="j-title">Our Little Ride</div>
           <div class="j-date">15th April 2024</div>
-          <div class="j-desc">The day our first-floor housewarming was done, I came to pick you up before your mom arrived. We went on a short bike ride for barely fifteen minutes, but somehow it became one of those moments that stayed with me. No grand plans, no destination—just us, the open road, and a memory I'll always cherish.</div>
+          <div class="j-desc">The day our first-floor housewarming was done, I came to pick you up before your mom arrived. We went on a short bike ride for barely fifteen minutes, but somehow it became one of those moments that stayed with me.</div>
         </div>
-
         <div class="journal-card reveal">
           <div class="j-tag"><i class="bi bi-balloon-heart me-1"></i> Special</div>
           <div class="j-title">Birthday Celebration</div>
           <div class="j-date">24th June 2021</div>
           <div class="j-desc">A surprise that took eight months of planning and eight months to bring to life. The moment it finally happened made every day of waiting worth it.</div>
         </div>
-
         <div class="journal-card reveal">
           <div class="j-tag"><i class="bi bi-water me-1"></i> Outdoors</div>
           <div class="j-title">Chennai Outing</div>
           <div class="j-date">18th July 2025</div>
-          <div class="j-desc">A metro ride across Chennai, lunch together, shopping at D-Mart, exploring Nexus Mall, seeking blessings at Vadapalani Temple, visiting the Kalaignar and Jayalalithaa Memorials, and ending the day by the waves of Marina Beach—every stop had its own charm, but the best part was sharing it all with you.</div>
+          <div class="j-desc">A metro ride across Chennai, lunch together, shopping at D-Mart, exploring Nexus Mall, seeking blessings at Vadapalani Temple, visiting memorials, and ending the day by the waves of Marina Beach.</div>
         </div>
-
         <div class="journal-card reveal">
-          <div class="j-tag"><i class="bi bi-chat me-1"></i>Chats</div>
+          <div class="j-tag"><i class="bi bi-chat me-1"></i> Chats</div>
           <div class="j-title">Endless Conversations</div>
           <div class="j-date">Ongoing</div>
           <div class="j-desc">We spent the whole day talking, teasing, arguing, laughing, and somehow never running out of things to say. Looking back, those little moments became the best part of the day.</div>
         </div>
-
         <div class="journal-card reveal">
           <div class="j-tag"><i class="bi bi-train-front me-1"></i> Memorable Train</div>
-          <div class="j-title">The coach next door</div>
+          <div class="j-title">The Coach Next Door</div>
           <div class="j-date">20th September 2024</div>
-          <div class="j-desc">When she boarded the Mysuru Express for her college IV trip to Bangalore, he boarded too—choosing an unreserved compartment just for the chance to see her. He traveled with her until Erode, proving that sometimes the shortest moments create the longest-lasting memories.</div>
+          <div class="j-desc">When she boarded the Mysuru Express for her college IV trip to Bangalore, he boarded too — choosing an unreserved compartment just for the chance to see her. He traveled with her until Erode.</div>
         </div>
-
         <div class="journal-card reveal">
           <div class="j-tag"><i class="bi bi-house-fill me-1"></i> Homecoming</div>
-          <div class="j-title">When home met "Her"</div>
+          <div class="j-title">When Home Met "Her"</div>
           <div class="j-date">29th November 2023</div>
-          <div class="j-desc">With my parents away for a family function, I finally got the chance to show her my home. From room to room, she explored every corner while we spent some quiet time together. A simple drive there and back, but a memory that made home feel a little more special.</div>
+          <div class="j-desc">With my parents away for a family function, I finally got the chance to show her my home. From room to room, she explored every corner while we spent some quiet time together.</div>
         </div>
-
       </div>
     </div>
   </section>
@@ -478,7 +452,6 @@ It wasn’t just a reply—it was a feeling he had been holding back for days, f
           Little notes we'd leave on the fridge, if we shared one yet.
         </p>
       </div>
-
       <div class="notes-grid">
         <div class="note-card note-tilt-1 reveal">
           <div class="note-pin"></div>
@@ -505,7 +478,7 @@ It wasn’t just a reply—it was a feeling he had been holding back for days, f
   </section>
 
   <!-- ══════════════════════════════════════════════
-       FAVORITE THINGS
+       FAVOURITE THINGS
   ══════════════════════════════════════════════ -->
   <section class="bg-surface section-pad">
     <div class="max-w">
@@ -513,93 +486,56 @@ It wasn’t just a reply—it was a feeling he had been holding back for days, f
         <p class="section-eyebrow reveal">Favorites</p>
         <h2 class="section-title reveal mt-2">Two people. Two worlds. One home.</h2>
       </div>
-
       <div class="favorites-grid">
-
-        <!-- Dhanabal -->
         <div class="fav-card reveal">
           <div class="fav-avatar"><i class="bi bi-person-circle"></i></div>
           <div class="fav-name">Dhanabal's Favorites</div>
-
           <div class="fav-item">
             <div class="fav-item-icon"><i class="bi bi-egg-fried"></i></div>
-            <div>
-              <div class="fav-item-label">Favourite Food</div>
-              <div class="fav-item-value">Her Hand Mades</div>
-            </div>
+            <div><div class="fav-item-label">Favourite Food</div><div class="fav-item-value">Her Hand Mades</div></div>
           </div>
           <div class="fav-item">
             <div class="fav-item-icon"><i class="bi bi-film"></i></div>
-            <div>
-              <div class="fav-item-label">Favourite Movie</div>
-              <div class="fav-item-value">Thug Life, Parashakthi, Coolie, Karuppu Pulsar</div>
-            </div>
+            <div><div class="fav-item-label">Favourite Movie</div><div class="fav-item-value">Thug Life, Parashakthi, Coolie, Karuppu Pulsar</div></div>
           </div>
           <div class="fav-item">
             <div class="fav-item-icon"><i class="bi bi-music-note-beamed"></i></div>
-            <div>
-              <div class="fav-item-label">Favourite Song</div>
-              <div class="fav-item-value">Minnalvala</div>
-            </div>
+            <div><div class="fav-item-label">Favourite Song</div><div class="fav-item-value">Minnalvala</div></div>
           </div>
           <div class="fav-item">
             <div class="fav-item-icon"><i class="bi bi-airplane"></i></div>
-            <div>
-              <div class="fav-item-label">Dream Destination</div>
-              <div class="fav-item-value">J Nagar, Sivakasi</div>
-            </div>
+            <div><div class="fav-item-label">Dream Destination</div><div class="fav-item-value">J Nagar, Sivakasi</div></div>
           </div>
           <div class="fav-item">
             <div class="fav-item-icon"><i class="bi bi-palette"></i></div>
-            <div>
-              <div class="fav-item-label">Favourite Colour</div>
-              <div class="fav-item-value">Blue</div>
-            </div>
+            <div><div class="fav-item-label">Favourite Colour</div><div class="fav-item-value">Blue</div></div>
           </div>
         </div>
 
-        <!-- Gayathri -->
         <div class="fav-card reveal">
           <div class="fav-avatar"><i class="bi bi-person-heart"></i></div>
           <div class="fav-name">Gayathri's Favorites</div>
-
           <div class="fav-item">
             <div class="fav-item-icon"><i class="bi bi-egg-fried"></i></div>
-            <div>
-              <div class="fav-item-label">Favourite Food</div>
-              <div class="fav-item-value">Chicken Rice, Burger, Kaalan</div>
-            </div>
+            <div><div class="fav-item-label">Favourite Food</div><div class="fav-item-value">Chicken Rice, Burger, Kaalan</div></div>
           </div>
           <div class="fav-item">
             <div class="fav-item-icon"><i class="bi bi-film"></i></div>
-            <div>
-              <div class="fav-item-label">Favourite Movie</div>
-              <div class="fav-item-value">Thug Life, Coolie, Parashakthi</div>
-            </div>
+            <div><div class="fav-item-label">Favourite Movie</div><div class="fav-item-value">Thug Life, Coolie, Parashakthi</div></div>
           </div>
           <div class="fav-item">
             <div class="fav-item-icon"><i class="bi bi-music-note-beamed"></i></div>
-            <div>
-              <div class="fav-item-label">Favourite Song</div>
-              <div class="fav-item-value">Oh oh uyire</div>
-            </div>
+            <div><div class="fav-item-label">Favourite Song</div><div class="fav-item-value">Oh oh uyire</div></div>
           </div>
           <div class="fav-item">
             <div class="fav-item-icon"><i class="bi bi-airplane"></i></div>
-            <div>
-              <div class="fav-item-label">Dream Destination</div>
-              <div class="fav-item-value">Housing Board, Sivakasi</div>
-            </div>
+            <div><div class="fav-item-label">Dream Destination</div><div class="fav-item-value">Housing Board, Sivakasi</div></div>
           </div>
           <div class="fav-item">
             <div class="fav-item-icon"><i class="bi bi-palette"></i></div>
-            <div>
-              <div class="fav-item-label">Favourite Colour</div>
-              <div class="fav-item-value">Purple</div>
-            </div>
+            <div><div class="fav-item-label">Favourite Colour</div><div class="fav-item-value">Purple</div></div>
           </div>
         </div>
-
       </div>
     </div>
   </section>
@@ -616,7 +552,6 @@ It wasn’t just a reply—it was a feeling he had been holding back for days, f
           The streets, temples, terraces and stations that quietly became part of our story.
         </p>
       </div>
-
       <div class="map-card reveal">
         <div id="placesMap"></div>
       </div>
@@ -635,7 +570,6 @@ It wasn’t just a reply—it was a feeling he had been holding back for days, f
           The ones we keep replaying — on long calls, longer drives, and everything in between.
         </p>
       </div>
-
       <div class="playlist-card reveal">
         <div class="track-row" data-track-row>
           <button class="track-play" data-audio="audio-minnalvala" aria-label="Play Minnalvala">
@@ -647,7 +581,7 @@ It wasn’t just a reply—it was a feeling he had been holding back for days, f
             <div class="track-sub">Dhanabal's pick</div>
           </div>
           <audio id="audio-minnalvala" preload="none">
-            <source src="assets\audio\Minnalvala.mp3" type="audio/mpeg" />
+            <source src="assets/audio/Minnalvala.mp3" type="audio/mpeg" />
           </audio>
         </div>
         <div class="track-row" data-track-row>
@@ -660,7 +594,7 @@ It wasn’t just a reply—it was a feeling he had been holding back for days, f
             <div class="track-sub">Gayathri's pick</div>
           </div>
           <audio id="audio-oh-oh-uyire" preload="none">
-            <source src="assets\audio\Oh Oh Uyire.mp3" type="audio/mpeg" />
+            <source src="assets/audio/Oh Oh Uyire.mp3" type="audio/mpeg" />
           </audio>
         </div>
       </div>
@@ -679,81 +613,16 @@ It wasn’t just a reply—it was a feeling he had been holding back for days, f
           Some ticked, some still ahead — tap a card to mark it done.
         </p>
       </div>
-
       <div class="bucket-grid" id="bucketGrid">
-
-        <div class="bucket-card done reveal">
-          <div class="bucket-check"><i class="bi bi-check-lg"></i></div>
-          <div>
-            <div class="bucket-title">Car Ride</div>
-            <div class="bucket-sub">One road, endless conversations</div>
-          </div>
-        </div>
-
-        <div class="bucket-card done reveal">
-          <div class="bucket-check"><i class="bi bi-check-lg"></i></div>
-          <div>
-            <div class="bucket-title">Going to Movie</div>
-            <div class="bucket-sub">A good movie and even better company</div>
-          </div>
-        </div>
-
-        <div class="bucket-card reveal">
-          <div class="bucket-check"><i class="bi bi-check-lg"></i></div>
-          <div>
-            <div class="bucket-title">Theni Trip</div>
-            <div class="bucket-sub">Hills, mist &amp; quiet mornings</div>
-          </div>
-        </div>
-
-        <div class="bucket-card done reveal">
-          <div class="bucket-check"><i class="bi bi-check-lg"></i></div>
-          <div>
-            <div class="bucket-title">A Short Bike Ride</div>
-            <div class="bucket-sub">Open roads, no destination</div>
-          </div>
-        </div>
-
-        <div class="bucket-card done reveal">
-          <div class="bucket-check"><i class="bi bi-check-lg"></i></div>
-          <div>
-            <div class="bucket-title">Temple Date</div>
-            <div class="bucket-sub">Seeking blessings for the journey ahead</div>
-          </div>
-        </div>
-
-        <div class="bucket-card reveal">
-          <div class="bucket-check"><i class="bi bi-check-lg"></i></div>
-          <div>
-            <div class="bucket-title">Build our own house</div>
-            <div class="bucket-sub">Live with our family in our own house</div>
-          </div>
-        </div>
-
-        <div class="bucket-card done reveal">
-          <div class="bucket-check"><i class="bi bi-check-lg"></i></div>
-          <div>
-            <div class="bucket-title">Train Travel</div>
-            <div class="bucket-sub">Every station, a new memory waiting</div>
-          </div>
-        </div>
-
-        <div class="bucket-card reveal">
-          <div class="bucket-check"><i class="bi bi-check-lg"></i></div>
-          <div>
-            <div class="bucket-title">Cooking Together</div>
-            <div class="bucket-sub">A proper meal made from scratch</div>
-          </div>
-        </div>
-
-        <div class="bucket-card reveal">
-          <div class="bucket-check"><i class="bi bi-check-lg"></i></div>
-          <div>
-            <div class="bucket-title">Shopping Together</div>
-            <div class="bucket-sub">Browsing everything, buying almost nothing</div>
-          </div>
-        </div>
-
+        <div class="bucket-card done reveal"><div class="bucket-check"><i class="bi bi-check-lg"></i></div><div><div class="bucket-title">Car Ride</div><div class="bucket-sub">One road, endless conversations</div></div></div>
+        <div class="bucket-card done reveal"><div class="bucket-check"><i class="bi bi-check-lg"></i></div><div><div class="bucket-title">Going to Movie</div><div class="bucket-sub">A good movie and even better company</div></div></div>
+        <div class="bucket-card reveal"><div class="bucket-check"><i class="bi bi-check-lg"></i></div><div><div class="bucket-title">Theni Trip</div><div class="bucket-sub">Hills, mist &amp; quiet mornings</div></div></div>
+        <div class="bucket-card done reveal"><div class="bucket-check"><i class="bi bi-check-lg"></i></div><div><div class="bucket-title">A Short Bike Ride</div><div class="bucket-sub">Open roads, no destination</div></div></div>
+        <div class="bucket-card done reveal"><div class="bucket-check"><i class="bi bi-check-lg"></i></div><div><div class="bucket-title">Temple Date</div><div class="bucket-sub">Seeking blessings for the journey ahead</div></div></div>
+        <div class="bucket-card reveal"><div class="bucket-check"><i class="bi bi-check-lg"></i></div><div><div class="bucket-title">Build our own house</div><div class="bucket-sub">Live with our family in our own house</div></div></div>
+        <div class="bucket-card done reveal"><div class="bucket-check"><i class="bi bi-check-lg"></i></div><div><div class="bucket-title">Train Travel</div><div class="bucket-sub">Every station, a new memory waiting</div></div></div>
+        <div class="bucket-card reveal"><div class="bucket-check"><i class="bi bi-check-lg"></i></div><div><div class="bucket-title">Cooking Together</div><div class="bucket-sub">A proper meal made from scratch</div></div></div>
+        <div class="bucket-card reveal"><div class="bucket-check"><i class="bi bi-check-lg"></i></div><div><div class="bucket-title">Shopping Together</div><div class="bucket-sub">Browsing everything, buying almost nothing</div></div></div>
       </div>
     </div>
   </section>
@@ -770,66 +639,30 @@ It wasn’t just a reply—it was a feeling he had been holding back for days, f
           A shared vision board for the life we're building together — one goal at a time.
         </p>
       </div>
-
       <div class="goals-grid">
-
-        <div class="goal-card reveal">
-          <div class="goal-icon"><i class="bi bi-globe-asia-australia"></i></div>
-          <div class="goal-title">Travel Together</div>
-          <div class="goal-desc">New countries, new cultures, new perspectives. The world is large and we want to explore as much of it as possible — together.</div>
-        </div>
-
-        <div class="goal-card reveal">
-          <div class="goal-icon"><i class="bi bi-camera2"></i></div>
-          <div class="goal-title">Create More Memories</div>
-          <div class="goal-desc">Document the unplanned moments. Photograph the ordinary evenings. Fill this journal with more chapters worth returning to.</div>
-        </div>
-
-        <div class="goal-card reveal">
-          <div class="goal-icon"><i class="bi bi-mortarboard-fill"></i></div>
-          <div class="goal-title">Learn New Skills</div>
-          <div class="goal-desc">Pick up something new — together. A language, a craft, a sport. Growing individually and as a pair.</div>
-        </div>
-
-        <div class="goal-card reveal">
-          <div class="goal-icon"><i class="bi bi-house-heart-fill"></i></div>
-          <div class="goal-title">Build a Beautiful Future</div>
-          <div class="goal-desc">A home that's ours. Roots and rhythm. A place where mornings are slow and evenings are warm.</div>
-        </div>
-
-        <div class="goal-card reveal">
-          <div class="goal-icon"><i class="bi bi-pin-map-fill"></i></div>
-          <div class="goal-title">Explore New Places</div>
-          <div class="goal-desc">Off the usual path. Towns we've never heard of. Food we can't pronounce. Maps still unmarked.</div>
-        </div>
-
-        <div class="goal-card reveal">
-          <div class="goal-icon"><i class="bi bi-star-fill"></i></div>
-          <div class="goal-title">Achieve Shared Dreams</div>
-          <div class="goal-desc">The big ones. The ones that take time, patience, and each other. Working toward them — one day, one decision at a time.</div>
-        </div>
-
+        <div class="goal-card reveal"><div class="goal-icon"><i class="bi bi-globe-asia-australia"></i></div><div class="goal-title">Travel Together</div><div class="goal-desc">New countries, new cultures, new perspectives. The world is large and we want to explore as much of it as possible — together.</div></div>
+        <div class="goal-card reveal"><div class="goal-icon"><i class="bi bi-camera2"></i></div><div class="goal-title">Create More Memories</div><div class="goal-desc">Document the unplanned moments. Photograph the ordinary evenings. Fill this journal with more chapters worth returning to.</div></div>
+        <div class="goal-card reveal"><div class="goal-icon"><i class="bi bi-mortarboard-fill"></i></div><div class="goal-title">Learn New Skills</div><div class="goal-desc">Pick up something new — together. A language, a craft, a sport. Growing individually and as a pair.</div></div>
+        <div class="goal-card reveal"><div class="goal-icon"><i class="bi bi-house-heart-fill"></i></div><div class="goal-title">Build a Beautiful Future</div><div class="goal-desc">A home that's ours. Roots and rhythm. A place where mornings are slow and evenings are warm.</div></div>
+        <div class="goal-card reveal"><div class="goal-icon"><i class="bi bi-pin-map-fill"></i></div><div class="goal-title">Explore New Places</div><div class="goal-desc">Off the usual path. Towns we've never heard of. Food we can't pronounce. Maps still unmarked.</div></div>
+        <div class="goal-card reveal"><div class="goal-icon"><i class="bi bi-star-fill"></i></div><div class="goal-title">Achieve Shared Dreams</div><div class="goal-desc">The big ones. The ones that take time, patience, and each other. Working toward them — one day, one decision at a time.</div></div>
       </div>
     </div>
   </section>
 
-   <!-- ══════════════════════════════════════════════
-       IF YOU HADN'T REPLIED... (interactive story)
+  <!-- ══════════════════════════════════════════════
+       IF WE HAD NEVER TEXTED
   ══════════════════════════════════════════════ -->
   <section id="hadnt-replied" class="bg-surface section-pad">
     <div class="max-w">
       <div class="section-header centered mb-5">
         <p class="section-eyebrow reveal">A What If</p>
-        <h2 class="section-title reveal mt-2">If We had never texted</h2>
+        <h2 class="section-title reveal mt-2">If We Had Never Texted</h2>
         <p class="section-subtitle reveal mt-2" style="margin-inline:auto">
-          A single decision changed everything.<br>
-          Sometimes the smallest moments create the biggest stories.
+          A single decision changed everything.<br>Sometimes the smallest moments create the biggest stories.
         </p>
       </div>
-
       <div class="hr-stage reveal" id="hrStage">
-
-        <!-- Initial prompt -->
         <div class="hr-scene hr-scene-initial hr-active" id="hrSceneInitial" data-scene="initial" aria-hidden="false">
           <div class="hr-date">October 19, 2020</div>
           <div class="hr-sub">A message arrives.</div>
@@ -839,8 +672,6 @@ It wasn’t just a reply—it was a feeling he had been holding back for days, f
             <button class="btn-secondary" id="hrIgnoreBtn"><i class="bi bi-x-circle"></i> Ignore</button>
           </div>
         </div>
-
-        <!-- Ignore branch -->
         <div class="hr-scene hr-scene-ignore" id="hrSceneIgnore" data-scene="ignore" aria-hidden="true">
           <div class="hr-lines" id="hrIgnoreLines">
             <p class="hr-line">No first call.</p>
@@ -853,7 +684,7 @@ It wasn’t just a reply—it was a feeling he had been holding back for days, f
             <p class="hr-line hr-line-strong">No us.</p>
           </div>
           <div class="hr-pause" id="hrIgnorePause">
-            <p class="hr-whisper">I cant even</p>
+            <p class="hr-whisper">I can't even</p>
             <p class="hr-whisper">think of that situation right now.</p>
           </div>
           <div class="hr-relief" id="hrIgnoreRelief">
@@ -861,8 +692,6 @@ It wasn’t just a reply—it was a feeling he had been holding back for days, f
             <button class="btn-secondary hr-restart" id="hrRestartFromIgnore"><i class="bi bi-arrow-counterclockwise"></i> Begin again</button>
           </div>
         </div>
-
-        <!-- Reply branch -->
         <div class="hr-scene hr-scene-reply" id="hrSceneReply" data-scene="reply" aria-hidden="true">
           <div class="hr-chain" id="hrReplyChain">
             <div class="hr-chain-step"><span>&ldquo;H&rdquo;</span></div>
@@ -876,8 +705,6 @@ It wasn’t just a reply—it was a feeling he had been holding back for days, f
             <div class="hr-chain-step"><span>First outing.</span></div>
             <div class="hr-chain-arrow">↓</div>
             <div class="hr-chain-step"><span>Years of memories.</span></div>
-            <div class="hr-chain-arrow">↓</div>
-            <div class="hr-chain-step"><span>Countless conversations.</span></div>
             <div class="hr-chain-arrow">↓</div>
             <div class="hr-chain-step"><span>A story still being written.</span></div>
           </div>
@@ -895,7 +722,6 @@ It wasn’t just a reply—it was a feeling he had been holding back for days, f
             <button class="btn-secondary hr-restart" id="hrRestartFromReply"><i class="bi bi-arrow-counterclockwise"></i> Replay</button>
           </div>
         </div>
-
       </div>
     </div>
   </section>
@@ -903,7 +729,7 @@ It wasn’t just a reply—it was a feeling he had been holding back for days, f
   <!-- ══════════════════════════════════════════════
        OPEN WHEN...
   ══════════════════════════════════════════════ -->
-  <section id="openwhen" class="bg-surface section-pad">
+  <section id="openwhen" class="section-pad">
     <div class="max-w">
       <div class="section-header centered mb-5">
         <p class="section-eyebrow reveal">Open When...</p>
@@ -912,9 +738,7 @@ It wasn’t just a reply—it was a feeling he had been holding back for days, f
           Some words aren't meant for every day. They're meant for the exact moment you need them.
         </p>
       </div>
-
       <div class="openwhen-grid" id="openwhenGrid">
-
         <div class="envelope reveal" data-envelope tabindex="0" role="button" aria-expanded="false" aria-controls="letter-miss-me">
           <div class="envelope-body">
             <div class="envelope-flap"></div>
@@ -928,7 +752,6 @@ It wasn’t just a reply—it was a feeling he had been holding back for days, f
             </div>
           </div>
         </div>
-
         <div class="envelope reveal" data-envelope tabindex="0" role="button" aria-expanded="false" aria-controls="letter-sad">
           <div class="envelope-body">
             <div class="envelope-flap"></div>
@@ -942,7 +765,6 @@ It wasn’t just a reply—it was a feeling he had been holding back for days, f
             </div>
           </div>
         </div>
-
         <div class="envelope reveal" data-envelope tabindex="0" role="button" aria-expanded="false" aria-controls="letter-motivation">
           <div class="envelope-body">
             <div class="envelope-flap"></div>
@@ -951,12 +773,11 @@ It wasn’t just a reply—it was a feeling he had been holding back for days, f
               <span class="envelope-label">Open When You<br>Need Motivation</span>
             </div>
             <div class="envelope-letter" id="letter-motivation">
-              <p class="letter-text">Namma love panni etthainaiyo varusham aairuchu.Ippa enga vandhu nikkurom nu nenachu paaru. Nammale nenachurka maatom ivlo true va love pannuvom nnu. Inimelum love pannuvom, eppavum unakkaga nan nippen. Dhairiyamaa iru.</p>
+              <p class="letter-text">Namma love panni etthainaiyo varusham aairuchu. Ippa enga vandhu nikkurom nu nenachu paaru. Nammale nenachurka maatom ivlo true va love pannuvom nnu. Inimelum love pannuvom, eppavum unakkaga nan nippen. Dhairiyamaa iru.</p>
               <span class="letter-sign">— Yours forever</span>
             </div>
           </div>
         </div>
-
         <div class="envelope reveal" data-envelope tabindex="0" role="button" aria-expanded="false" aria-controls="letter-angry">
           <div class="envelope-body">
             <div class="envelope-flap"></div>
@@ -965,12 +786,11 @@ It wasn’t just a reply—it was a feeling he had been holding back for days, f
               <span class="envelope-label">Open When You're<br>Angry With Me</span>
             </div>
             <div class="envelope-letter" id="letter-angry">
-              <p class="letter-text">Nee en mela kovama irukka nu puriyudhu. Aana evlo kovam vandhaalum enta pesama mattum irukkadha. Edhavadhu thappu pannirundha adichukko, thittikko enna vena panniko aana pesama mattum irundhuraadha. Aprm en mela thappu irundha romba "Sorry", mannichukko. Inime andha thappa pannama paathukuren.</p>
+              <p class="letter-text">Nee en mela kovama irukka nu puriyudhu. Aana evlo kovam vandhaalum enta pesama mattum irukkadha. Edhavadhu thappu pannirundha adichukko, thittikko enna vena panniko aana pesama mattum irundhuraadha. Aprm en mela thappu irundha romba "Sorry", mannichukko.</p>
               <span class="letter-sign">— Ippadiku baalu</span>
             </div>
           </div>
         </div>
-
         <div class="envelope reveal" data-envelope tabindex="0" role="button" aria-expanded="false" aria-controls="letter-smile">
           <div class="envelope-body">
             <div class="envelope-flap"></div>
@@ -979,12 +799,11 @@ It wasn’t just a reply—it was a feeling he had been holding back for days, f
               <span class="envelope-label">Open When You<br>Need A Smile</span>
             </div>
             <div class="envelope-letter" id="letter-smile">
-              <p class="letter-text">Eppolaam unaku sirippu varanum nnu nenaikiriyo appo lam nammaloda photos eduthu paaru. Evlo cringe panni vachurupom nu. Matthavangaluku vena adhu cringe aa theriyalaam, aana namakku adhu oru oru photo vum nalla memory dhaana. Adha paakurapo enake theriyama sirichutu irupen. Neeyum paathu sirikkanum nu idha eludhuren inga.</p>
+              <p class="letter-text">Eppolaam unaku sirippu varanum nnu nenaikiriyo appo lam nammaloda photos eduthu paaru. Evlo cringe panni vachurupom nu. Matthavangaluku vena adhu cringe aa theriyalaam, aana namakku adhu oru oru photo vum nalla memory dhaana. Adha paakurapo enake theriyama sirichutu irupen.</p>
               <span class="letter-sign">— Dhanabal mama</span>
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </section>
@@ -998,10 +817,9 @@ It wasn’t just a reply—it was a feeling he had been holding back for days, f
         <p class="section-eyebrow reveal">Guestbook</p>
         <h2 class="section-title reveal mt-2">Leave us a little note.</h2>
         <p class="section-subtitle reveal mt-2" style="margin-inline:auto">
-          Saved right here on this device — a quiet corner for kind words.
+          Saved right here — a quiet corner for kind words.
         </p>
       </div>
-
       <div class="guestbook-card reveal">
         <form id="guestbookForm" class="guestbook-form">
           <input type="text" id="gbName" placeholder="Your name" maxlength="40" required />
@@ -1012,8 +830,6 @@ It wasn’t just a reply—it was a feeling he had been holding back for days, f
       </div>
     </div>
   </section>
-
- 
 
   <!-- ══════════════════════════════════════════════
        QUOTE
@@ -1034,23 +850,16 @@ It wasn’t just a reply—it was a feeling he had been holding back for days, f
   <footer id="footer">
     <div class="footer-inner">
       <div class="row gy-5">
-
-        <!-- Brand -->
         <div class="col-lg-4">
           <div class="footer-brand">Dhanabal &amp; Gayathri</div>
-          <p class="footer-tagline mt-2">
-            A digital collection of memories, stories and dreams.<br>
-            Private · Personal · Ours.
-          </p>
-          <div class="social-links mt-4">
+          <p class="footer-tagline mt-2">A digital collection of memories, stories and dreams.<br>Private · Personal · Ours.</p>
+          <div class="social-links">
             <a class="social-link" href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
             <a class="social-link" href="#" aria-label="Twitter/X"><i class="bi bi-twitter-x"></i></a>
             <a class="social-link" href="#" aria-label="Pinterest"><i class="bi bi-pinterest"></i></a>
             <a class="social-link" href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
           </div>
         </div>
-
-        <!-- Explore -->
         <div class="col-6 col-lg-2 offset-lg-2">
           <div class="footer-col-title">Explore</div>
           <ul class="footer-links">
@@ -1060,8 +869,6 @@ It wasn’t just a reply—it was a feeling he had been holding back for days, f
             <li><a href="#journal">Journal</a></li>
           </ul>
         </div>
-
-        <!-- More -->
         <div class="col-6 col-lg-2">
           <div class="footer-col-title">More</div>
           <ul class="footer-links">
@@ -1074,8 +881,6 @@ It wasn’t just a reply—it was a feeling he had been holding back for days, f
             <li><a href="#guestbook">Guestbook</a></li>
           </ul>
         </div>
-
-        <!-- Together -->
         <div class="col-12 col-lg-2">
           <div class="footer-col-title">Together</div>
           <ul class="footer-links">
@@ -1084,19 +889,16 @@ It wasn’t just a reply—it was a feeling he had been holding back for days, f
             <li><a href="#bucket">50+ Goals</a></li>
           </ul>
         </div>
-
       </div>
-
-      <!-- Bottom -->
       <div class="footer-bottom">
-        <span class="footer-copy">© 2024 Dhanabal &amp; Gayathri. All rights reserved.</span>
+        <span class="footer-copy">© 2026 Dhanabal &amp; Gayathri. All rights reserved.</span>
         <span class="footer-heart">Made with love for each other</span>
       </div>
     </div>
   </footer>
 
   <!-- ══════════════════════════════════════════════
-       CONFIRM DIALOG (used by Guestbook delete)
+       CONFIRM DIALOG
   ══════════════════════════════════════════════ -->
   <div class="confirm-overlay" id="confirmOverlay" role="alertdialog" aria-modal="true" aria-labelledby="confirmTitle">
     <div class="confirm-box">
@@ -1113,7 +915,7 @@ It wasn’t just a reply—it was a feeling he had been holding back for days, f
   <!-- ══════════════════════════════════════════════
        SCRIPTS
   ══════════════════════════════════════════════ -->
-  <!-- Leaflet JS (for the Our Places map) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
   <script type="module" src="script.js"></script>
+</body>
 </html>
