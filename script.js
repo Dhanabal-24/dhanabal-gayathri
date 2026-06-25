@@ -5,7 +5,7 @@
 
 /* ── Key dates ───────────────────────────────────────────── */
 const RELATIONSHIP_START = new Date('2020-10-19T00:00:00');
-const ANNIVERSARY_MONTH_DAY = { month: 9, day: 19 }; // month is 0-indexed (9 = October)
+const ANNIVERSARY_MONTH_DAY = { month: 9, day: 19 }; // 0-indexed (9 = October)
 
 /* ── Firebase Firestore (Guestbook) ──────────────────────── */
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
@@ -57,11 +57,6 @@ function closeMenu() {
   navIcon.className = 'bi bi-list';
 }
 
-// Close the mobile menu whenever one of its links is tapped.
-// (Inline onclick="closeMenu()" attributes in the HTML don't work here because
-// this file is loaded as an ES module — top-level functions in a module are
-// NOT attached to window, so the browser can't find closeMenu() from inline
-// HTML. Wiring it up here, where closeMenu is in scope, fixes that.)
 menu.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', closeMenu);
 });
@@ -200,37 +195,37 @@ const memories = [
   'A surprise birthday plan that took eight whole months to pull off.',
   'An unreserved train compartment, just to ride with you until Erode.',
   'A quiet house tour, room by room, that made home feel a little more special.',
-  'A random nignt, us in "Mysuru Express".. Longing to see each other in same compartment.',
+  'A random night, us in "Mysuru Express".. Longing to see each other in same compartment.',
   'A full day in Chennai — metro rides, temple blessings, and Marina Beach waves.',
   'October 19, 2020 — a single letter crossed a screen and quietly rewrote our future.',
-  'omewhere between "Hi" and "I love you," we became home to each other.',
+  'Somewhere between "Hi" and "I love you," we became home to each other.',
   'That one-minute call carried months of unsaid excitement.',
   'Two strangers typing messages, unaware they were creating memories.',
-'A terrace sunset that stayed long after the sun had disappeared.',
-'Noodles for dinner, laughter for dessert.',
-'An empty house, a racing heartbeat, and a selfie that still feels alive.',
-'Every room in the house became part of our story that evening.',
-'A bike ride so short in distance, yet so long in memory.',
-'The road had no destination; we had no complaints.',
-'A car ride where the conversations were better than the scenery.',
-'We started the journey as passengers and returned as memories.',
-'A train compartment full of strangers and one familiar smile.',
-'The Mysuru Express carried us forward while time seemed to stand still.',
-'Marina waves came and went, but that day never did.',
-'Temple bells echoed softly while my prayers stood beside me.',
-'A birthday surprise measured in months of planning and seconds of happiness.',
-'We mastered the art of turning ordinary days into favourite memories.',
-'Every "Reached?" was another way of saying "I care."',
-'Some photographs capture faces; this one captured a feeling.',
-'A random evening became a permanent bookmark in my heart.',
-'We never needed grand adventures; we were the adventure.',
-'The best part of every journey was never the place—it was the company.',
-'Some memories fade with time. Ours learned how to stay.',
-'If happiness had a location, it would be the seat next to you.',
-'We spent years creating the kind of memories people write novels about.',
-'One conversation changed a day. One person changed a lifetime.',
-'The stars witnessed many nights, but only we know those conversations.',
-'Our story is proof that fate sometimes starts with a notification.',
+  'A terrace sunset that stayed long after the sun had disappeared.',
+  'Noodles for dinner, laughter for dessert.',
+  'An empty house, a racing heartbeat, and a selfie that still feels alive.',
+  'Every room in the house became part of our story that evening.',
+  'A bike ride so short in distance, yet so long in memory.',
+  'The road had no destination; we had no complaints.',
+  'A car ride where the conversations were better than the scenery.',
+  'We started the journey as passengers and returned as memories.',
+  'A train compartment full of strangers and one familiar smile.',
+  'The Mysuru Express carried us forward while time seemed to stand still.',
+  'Marina waves came and went, but that day never did.',
+  'Temple bells echoed softly while my prayers stood beside me.',
+  'A birthday surprise measured in months of planning and seconds of happiness.',
+  'We mastered the art of turning ordinary days into favourite memories.',
+  'Every "Reached?" was another way of saying "I care."',
+  'Some photographs capture faces; this one captured a feeling.',
+  'A random evening became a permanent bookmark in my heart.',
+  'We never needed grand adventures; we were the adventure.',
+  'The best part of every journey was never the place—it was the company.',
+  'Some memories fade with time. Ours learned how to stay.',
+  'If happiness had a location, it would be the seat next to you.',
+  'We spent years creating the kind of memories people write novels about.',
+  'One conversation changed a day. One person changed a lifetime.',
+  'The stars witnessed many nights, but only we know those conversations.',
+  'Our story is proof that fate sometimes starts with a notification.',
 ];
 
 const jarButton = document.getElementById('jarButton');
@@ -414,7 +409,7 @@ document.addEventListener('click', (e) => {
 });
 
 /* ══════════════════════════════════════════════════════════
-   GUESTBOOK — Firebase Firestore (shared across all devices)
+   GUESTBOOK — Firebase Firestore
 ══════════════════════════════════════════════════════════ */
 const guestbookForm = document.getElementById('guestbookForm');
 const guestbookList = document.getElementById('guestbookList');
@@ -468,7 +463,6 @@ function buildEntryEl(id, data) {
   const item = document.createElement('div');
   item.className  = 'guestbook-entry';
   item.dataset.id = id;
-  // Safely escape HTML but allow emojis (they are plain unicode, not HTML)
   const safeName = data.name.replace(/</g, '&lt;').replace(/>/g, '&gt;');
   const safeMsg  = data.message.replace(/</g, '&lt;').replace(/>/g, '&gt;');
   item.innerHTML = `
@@ -480,7 +474,7 @@ function buildEntryEl(id, data) {
   return item;
 }
 
-/* ── Real-time listener — updates on EVERY device instantly ─ */
+/* ── Real-time listener ───────────────────────────────────── */
 if (guestbookForm) {
   const q = query(collection(db, 'guestbook'), orderBy('createdAt', 'desc'));
 
@@ -623,4 +617,156 @@ if (guestbookForm) {
   ignoreBtn.addEventListener('click', playIgnoreSequence);
   restartFromIgnore.addEventListener('click', resetToInitial);
   restartFromReply.addEventListener('click', resetToInitial);
+})();
+
+/* ══════════════════════════════════════════════════════════
+   THE MESSAGE THAT STARTED IT ALL — animation
+══════════════════════════════════════════════════════════ */
+(() => {
+  const phoneWrap = document.getElementById('fmPhoneWrap');
+  const chat      = document.getElementById('fmChat');
+  const dateSep   = document.getElementById('fmDateSep');
+  const heartsEl  = document.getElementById('fmHearts');
+
+  if (!phoneWrap || !chat) return;
+
+  /* ── Conversation data ── */
+  const MESSAGES = [
+    { dir: 'incoming', text: 'H' },
+    { dir: 'outgoing', text: 'Nee jana sister dhana?' },
+    { dir: 'incoming', text: 'Ama' },
+    { dir: 'outgoing', text: 'Hii.. How are you?' },
+    { dir: 'incoming', text: 'Enna attitude aa?' },
+    { dir: 'outgoing', text: 'Attitude aa 😅' },
+    { dir: 'incoming', text: 'Function la hi katuna kandukama poringa 😂' },
+  ];
+
+  const MSG_INTERVAL = 1500;  // ms between messages
+
+  let started = false;
+  const fmTimers = [];
+  const fmDelay  = (fn, ms) => fmTimers.push(setTimeout(fn, ms));
+
+  /* ── Scroll only the chat div, never the page ── */
+  function scrollChat() {
+    chat.scrollTop = chat.scrollHeight;
+  }
+
+  /* ── Build a message bubble element ── */
+  function buildMessage({ dir, text }) {
+    const row = document.createElement('div');
+    row.className = `fm-msg ${dir}`;
+
+    if (dir === 'incoming') {
+      const av = document.createElement('div');
+      av.className = 'fm-msg-avatar';
+      av.textContent = 'G';
+      row.appendChild(av);
+    }
+
+    const bubble = document.createElement('div');
+    bubble.className = 'fm-bubble';
+    bubble.textContent = text;
+    row.appendChild(bubble);
+
+    return row;
+  }
+
+  /* ── Play the animation sequence (loops forever) ── */
+  function playSequence() {
+    // Clear any previous content and reset scroll
+    chat.innerHTML = '';
+    chat.style.opacity = '1';
+    chat.style.transition = '';
+    chat.scrollTop = 0;
+
+    // Recreate date separator (cleared above)
+    const sep = document.createElement('div');
+    sep.className = 'fm-date-sep';
+    sep.innerHTML = '<span>19 OCT 2020</span>';
+    chat.appendChild(sep);
+    fmDelay(() => sep.classList.add('visible'), 200);
+
+    // Reveal messages one by one — scroll only within the chat box
+    MESSAGES.forEach((msg, i) => {
+      const delay = 600 + i * MSG_INTERVAL;
+      fmDelay(() => {
+        const el = buildMessage(msg);
+        chat.appendChild(el);
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            el.classList.add('visible');
+            scrollChat();
+          });
+        });
+      }, delay);
+    });
+
+    const afterLast = 600 + MESSAGES.length * MSG_INTERVAL;
+
+    // Hold on last message, spawn hearts, then fade out and restart loop
+    fmDelay(() => {
+      spawnHearts();
+
+      fmDelay(() => {
+        chat.style.transition = 'opacity 0.9s ease';
+        chat.style.opacity = '0';
+        fmDelay(() => {
+          fmTimers.forEach(t => clearTimeout(t));
+          fmTimers.length = 0;
+          playSequence();
+        }, 400);
+      }, 300);
+    }, afterLast + 500);
+  }
+
+  /* ── Heart particles — slow, gentle, continuous drift ── */
+  function spawnHearts() {
+    if (!heartsEl) return;
+    const symbols = ['❤️', '💕', '💗', '💖', '✨'];
+
+    // Spawn fewer particles, staggered over several seconds
+    for (let i = 0; i < 8; i++) {
+      fmDelay(() => {
+        const h = document.createElement('span');
+        h.className = 'fm-heart-particle';
+        h.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+        h.style.left      = `${8 + Math.random() * 84}%`;
+        h.style.bottom    = '10%';
+        h.style.top       = 'auto';
+        // Long, slow animation: 5–9 seconds duration
+        h.style.setProperty('--dur',   `${5 + Math.random() * 4}s`);
+        h.style.setProperty('--delay', '0s');
+        h.style.fontSize  = `${0.6 + Math.random() * 0.5}rem`;
+        h.style.opacity   = '0';
+        heartsEl.appendChild(h);
+      }, i * 400); // stagger each particle by 400 ms
+    }
+  }
+
+  /* ── Intersection Observer: fire once when phone enters viewport ── */
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !started) {
+        started = true;
+        playSequence();
+        io.unobserve(phoneWrap);
+      }
+    });
+  }, { threshold: 0.35 });
+  io.observe(phoneWrap);
+
+  /* ── Parallax: subtle drift while scrolling (never locks scroll) ── */
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    window.addEventListener('scroll', () => {
+      const section = document.getElementById('first-message');
+      if (!section) return;
+      const rect = section.getBoundingClientRect();
+      const vh   = window.innerHeight;
+      if (rect.bottom < 0 || rect.top > vh) return;
+      const progress = (vh - rect.top) / (vh + rect.height);
+      const drift = (progress - 0.5) * 40;
+      phoneWrap.style.transform = `translateY(${drift * -0.4}px)`;
+    }, { passive: true });
+  }
 })();
